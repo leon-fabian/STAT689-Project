@@ -1,7 +1,7 @@
 ---
-title: "P1: Theme Project Pitch"
+title: 'P1: Theme Project Pitch'
 author: "Fabian Leon, Ram, Ashok"
-output: pdf_document
+output: html_document
 ---
 
 ## Introduction
@@ -11,7 +11,17 @@ The idea for this visualization project is to use the [Texas A&M Variety Testing
 
 ## Inspiration
 
-Here we will embed 3-4 pictures of data visualizations that we think look good. 
+First, there already exists at least two examples of mapping the county-level production of sorghum acres.
+The [USDA National Agricultural Statistics Service's](https://www.nass.usda.gov/Charts_and_Maps/Crops_County/index.php) reported maps.
+And also, [Zachary Stansell](https://twitter.com/ZacharyStansell/status/1354612264679198722)'s [tool](https://gist.github.com/zacharystansell/fd1ebd6e3cda8a175680b78a4b271497) to map USDA crop data which uses [these APIs](https://sheilasaia.rbind.io/post/2020-06-30-nass-api-part2/). 
+  
+![](https://www.nass.usda.gov/Charts_and_Maps/graphics/AS-PL-RGBChor.png){width=50%}![](https://pbs.twimg.com/media/EsycwlhXYAAOhrA?format=jpg&name=4096x4096){width=45%}
+
+Further inspiration motivates us to create a visualization like Zachary Labe's depiction of Arctic Sea Ice Volume/Thickness. This is a gif but an interactive approach could allow you to slide through years and see the changing geographic heat map of Texas trends.  
+
+![arctic gif](https://miro.medium.com/max/700/1*6cgte9exvaRw8ANu-IYi0w.gif){width=50%}
+
+
 
 ## Sketch
 
