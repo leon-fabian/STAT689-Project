@@ -1,0 +1,82 @@
+---
+title:"P1: Sorghum Project Pitch"
+author: "<span style='font-size: 14px'> Ram Pangaluri, Fabian Leon, Ashok Shanker</style>"
+output: html_document
+---
+
+#### Introduction
+Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cereal crop, in terms of both production and area planted. It is an increasingly relevant grain crop due to its resilience to drier and hotter climates. In the United States, sorghum is typically grown in dryland areas from South Dakota to South Texas and Texas accounts for ~1.8 million of the United States' ~5.8 million acres of sorghum production. 
+
+The idea for this visualization project is to use the [Texas A&M Variety Testing](http://varietytesting.tamu.edu/grainsorghum/) and [USDA NASS](https://quickstats.nass.usda.gov/) data repositories on [grain sorghum](https://www.sorghumcheckoff.com/sorghum-101/) production to visualize yield and production trends for the state of Texas. 
+
+#### Dataset Review
+For this project we plan to primarily use two main datasets. The first is the TAES dataset from Texas A&M Agrilife, which contains data from 2021 Texas Sorghum Variety Trials. The second is the dataset from the USDA National Agricultural Statistics website. This dataset is helpful because we can adjust this data for different time periods, counties, etc.
+
+**TAES Dataset:**
+This dataset contains sorghum statistics from 1970-2021 for different counties/cities around Texas, centering around College Station.
+
+Characteristics/Attributes:
+This dataset is extensive and has 50+ columns describing crop yield and quality.
+Some important columns include...  
+
+* Year - Year survey data point was obtained.  
+
+* County - Texas County Name  
+
+* Irrigation - Irrigation level/amount
+* Brand - Brand of sorghum plant/seed
+* Herbicide - Substances used to protect crop  
+
+Many chemical reading columns are included such as ...  
+
+* Phosphorus - amount of phosphorus in crop reading
+* Nitrogen - amount of nitrogen in crop reading
+* Potassium - amount of potassium in crop reading  
+
+Others ...  
+
+* AvgOf% Bird Damage - average percentage of crop lost due to birds
+* AvgOfpH - average amount of acidity in crop reading
+
+While these are not the only columns in the dataset. As of our initial 
+analysis we have determined that these columns possibly hold interesting data/insights. What our team deems important may change in the future as this project progresses.
+
+**USDA Dataset:**
+This dataset is more queryable and contains additional information on not only sorghum but other crops as well. There are many columns.
+
+Characteristics/Attributes:
+Some important columns include...  
+
+* Year - Year survey data point was obtained.  
+
+* County - Texas County Name  
+* Commodity - Type of Crop/Crop Name
+* Value - Quantity of Crop
+* CV(%) - The coefficient of variation, this reflects the error magnitude
+
+As in the former dataset, important columns may change as we explore the data further.
+
+#### Inspiration
+
+First, there already exists at least two examples of mapping the county-level production of sorghum acres.
+The [USDA National Agricultural Statistics Service's](https://www.nass.usda.gov/Charts_and_Maps/Crops_County/index.php) reported maps and [Zachary Stansell](https://twitter.com/ZacharyStansell/status/1354612264679198722)'s [tool](https://gist.github.com/zacharystansell/fd1ebd6e3cda8a175680b78a4b271497) to map USDA crop data which uses [these APIs](https://sheilasaia.rbind.io/post/2020-06-30-nass-api-part2/). 
+<center>  
+![](https://www.nass.usda.gov/Charts_and_Maps/graphics/AS-PL-RGBChor.png){width=35%}![](https://pbs.twimg.com/media/EsycwlhXYAAOhrA?format=jpg&name=4096x4096){width=31%}
+<center>
+
+Further, we are motivated to go beyond a static map and create a dynamic choropleth map like Zachary Labe's depiction of Arctic Sea Ice Volume/Thickness. This is a gif but an interactive approach could allow you to slide through years and see the changing geographic heat map of Texas' grain sorghum trends. Lastly, the regions of texas could provide the categories for a stream graph depicting a variable's distribution over the years. 
+
+<center>
+![](https://miro.medium.com/max/700/1*6cgte9exvaRw8ANu-IYi0w.gif){width=30%} ![](https://datavizcatalogue.com/methods/images/top_images/SVG/stream_graph.svg){width=40%}
+<center>
+
+#### Sketch
+<center>
+![](visualization-sketch.png){width=75%}
+<center>
+
+#### Story Points From the Two Datasets
+Story : What are the most important factors that contribute to sorghum crop yield in the counties of Texas?  
+Audience: Farmers, Students, Agricultural institutions.  
+Attributes: See above.
+Metrics: Correlation ( x vs y), linear regression, error calculations, future crop yield/outputs.
