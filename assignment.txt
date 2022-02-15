@@ -1,0 +1,35 @@
+airquality
+is.na(airquality)
+sum(is.na(airquality))
+subset(airquality, Temp>75 & Month==5, c("Temp", "Month"))
+mean(airquality.ozone)
+mean(airquality$Ozone)
+min(airquality$Ozone)
+median(airquality$Ozone)
+min(airquality$Ozone, na.rm = FALSE)
+min(airquality$Ozone, na.rm = TRUE)
+max(airquality$Ozone, na.rm = TRUE)
+median(airquality$Ozone, na.rm = TRUE)
+ggplot(airquality, aes(sample=Ozone))+stat_qq()
+install.packages("ggplot2")
+ggplot(airquality, aes(sample=Ozone))+stat_qq()
+library(ggplot2)
+ggplot(airquality, aes(sample=Ozone))+stat_qq()
+mean(airquality$Ozone, na.rm = TRUE)
+qqline(normal)
+qqline(normal)
+install.packages("ggpubr")
+load("ggpubr")
+library("ggpubr")
+res <- cor.test(airquality$Temp, airquality$Wind,
+method = "pearson")
+res
+res <- cor.test(airquality$Temp, airquality$Month,
+method = "pearson")
+res
+res <- cor.test(airquality$Temp, airquality$Day,
+method = "pearson")
+res
+sink(dataout.txt)
+savehistory(assignment.txt)
+savehistory("assignment.txt")
