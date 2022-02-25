@@ -1,0 +1,50 @@
+---
+title: "P3: Enrich your Dataset"
+author: "Ram Pangaluri, Fabian Leon, Ashok Shanker"
+date: "February 25, 2022"
+output: pdf_document
+---
+
+## P3: Enrich/Format/Blend your Dataset
+
+To start the data enrichment phase of the project, we joined all your different sources
+
+
+### Adding geographic detail such as latitude and longitude
+
+
+### Merging datasets: Year and County. 
+USDA dataset's county names were in all-caps so they needed to be renamed to change that. 
+
+
+### TX AgriLife Regions vs USDA Districts
+The two datasets each included a Region column that were slightly different. We selected the Texas AgriLife regional distinctions as our chosen. 
+Keep TX AgriLife Regions - ignore USDA Ag districts
+
+
+Converted irrigation quantity data column observations from "none" to "0" and made the column an entirely numerical variable. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
