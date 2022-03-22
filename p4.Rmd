@@ -1,0 +1,66 @@
+---
+title: <center> P4 - Data Analysis </center>
+author: <center> Ram Pangaluri, Ashok Shanker, Fabian Leon </center>
+output: html_document
+---
+
+
+<!-- Changing the fonts and style to fit more into less pages -->
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 12px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 18px;
+  color: Black;
+}
+h1 { /* Header 1 */
+  font-size: 18px;
+  color: DarkBlue;
+}
+h2 { /* Header 2 */
+    font-size: 16px;
+  color: DarkBlue;
+}
+h3 { /* Header 3 */
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkBlue;
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+h4.author {
+  font-size: 12px;
+  color: DarkBlue;
+}
+</style>
+
+
+<!-- Begin document -->
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Grading Rubric
+- Clear identification of at least 5 questions or story points that will be answered by your project 
+- Clear statement of 4 or more different analyses of data that you will perform 
+- Justification for each analysis, including why it is appropriate to the data and why it is appropriate to the story you are trying to tell. 
+- Note: we expect at least one (probably more) of the analyses to be a visual analysis; that is,  understanding should be obtained through a visual representation (such as a plot or graph) of the data
+- Presentation in an RMarkdown of 2 pages 
+
+
+## Data Analyis Plan
+
+five questions or story points
+
+4 or more or different analyses of data
+one of which should be a prediction
+
