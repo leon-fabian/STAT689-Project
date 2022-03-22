@@ -20,16 +20,16 @@ h1.title {
 }
 h1 { /* Header 1 */
   font-size: 18px;
-  color: DarkBlue;
+  color: Black;
 }
 h2 { /* Header 2 */
     font-size: 16px;
-  color: DarkBlue;
+  color: Black;
 }
 h3 { /* Header 3 */
   font-size: 14px;
   font-family: "Times New Roman", Times, serif;
-  color: DarkBlue;
+  color: Black;
 }
 code.r{ /* Code block */
     font-size: 12px;
@@ -57,10 +57,43 @@ knitr::opts_chunk$set(echo = TRUE)
 - Presentation in an RMarkdown of 2 pages 
 
 
-## Data Analyis Plan
+## Story point 1
+Q:What physiological dependencies are there between hybrid traits? For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower? 
+Approach: Correlogram of hybrid traits
+Required statistical tools: Pearson's R correlation implemented in r with ggplot2 and ggpairs packages
 
-five questions or story points
 
-4 or more or different analyses of data
-one of which should be a prediction
+## Story point 2
+Q: What regions of Texas are the highest yielding environments for sorghum hybrids?
+
+Approach:
+
+Required statistical tools:
+
+
+## Story point 3
+Q:
+
+Approach:
+
+Required statistical tools:
+
+
+## Story point 4
+Q:
+
+Approach:
+
+Required statistical tools:
+
+
+
+## Story point 5
+Q:
+
+Approach:
+
+Required statistical tools:
+
+
 
