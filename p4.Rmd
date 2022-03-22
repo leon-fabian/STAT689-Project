@@ -52,37 +52,58 @@ h4.author {
 
 <!-- Begin document -->
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-### What physiological dependencies are there between hybrid traits? 
+## How have Texas' sorghum yields improved over time?
+Advances in breeding, technology, production, and management all lead to higher sorghum yields. How have sorghum yields changed over time and what time periods saw the greatest increases in yield?
+
+Range Sliders and Selectors in R will be implemented via line graphs. Plotting will be done with the plotly package. 
+
+
+
+## What physiological dependencies are there between hybrid traits? 
 For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower?   
 
-Approach: Correlogram of hybrid traits  
-Required statistical tools: Pearson's R correlation implemented in r with ggplot2 and ggpairs packages  
+
+For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower? An interactive scatterplot that plots and displays pearson’s R for whichever two variables the person selects. 
+
+or 
+
+Correlogram of hybrid traits  
+Pearson's R correlation implemented in r with ggplot2 and ggpairs packages  
 
 
-## What regions of Texas are the highest yielding environments for sorghum hybrids?  
+## What counties of Texas are the highest yielding environments for sorghum hybrids?  
 
-Approach:   
+A Chloropleth Map of average yields per county. The map would be dynamic and 
+
+Required statistical tools:
+
+
+## Grain Sorghum Traits in Texas Counties 
+
+
+
+
+
+A nonlinear iterative partial least squares (nipals) principal component analysis (PCA) will be conducted on the calculated trait BLUPs attributable to counties from a linear mixed model analysis of Texas AgriLife data wherein traits of interest (yield, plant height, testweight, days to flowering, etc.) will be fitted to an all random model including year, county, hybrid, irrigation, 
  
-Required statistical tools:  
 
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+library(equatiomatic)
+library(lme4)
 
-## Grain Sorghum Yields in Texas Counties 
+data = read.csv("data/data.csv")
+str(data)
 
-Approach: Chloropleth Map
+fit <- lm(GY ~ Hybrid + County + Hybrid*County + Total.Moisture + Previous.Crop + Maturity + Days.from.Plant.to.Harvest, data)
+# show the theoretical model
+equatiomatic::extract_eq(fit)
 
-Required statistical tools:
+```
 
-
-## Story point 4
-Q:
-
-Approach:
-
-Required statistical tools:
 
 
 
