@@ -43,38 +43,36 @@ h4.author {
 }
 </style>
 
+<!-- ## Grading Rubric -->
+<!-- - Clear identification of at least 5 questions or story points that will be answered by your project  -->
+<!-- - Clear statement of 4 or more different analyses of data that you will perform  -->
+<!-- - Justification for each analysis, including why it is appropriate to the data and why it is appropriate to the story you are trying to tell.  -->
+<!-- - Note: we expect at least one (probably more) of the analyses to be a visual analysis; that is,  understanding should be obtained through a visual representation (such as a plot or graph) of the data -->
+<!-- - Presentation in an RMarkdown of 2 pages  -->
 
 <!-- Begin document -->
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Grading Rubric
-- Clear identification of at least 5 questions or story points that will be answered by your project 
-- Clear statement of 4 or more different analyses of data that you will perform 
-- Justification for each analysis, including why it is appropriate to the data and why it is appropriate to the story you are trying to tell. 
-- Note: we expect at least one (probably more) of the analyses to be a visual analysis; that is,  understanding should be obtained through a visual representation (such as a plot or graph) of the data
-- Presentation in an RMarkdown of 2 pages 
+
+### What physiological dependencies are there between hybrid traits? 
+For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower?   
+
+Approach: Correlogram of hybrid traits  
+Required statistical tools: Pearson's R correlation implemented in r with ggplot2 and ggpairs packages  
 
 
-## Story point 1
-Q:What physiological dependencies are there between hybrid traits? For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower? 
-Approach: Correlogram of hybrid traits
-Required statistical tools: Pearson's R correlation implemented in r with ggplot2 and ggpairs packages
+## What regions of Texas are the highest yielding environments for sorghum hybrids?  
+
+Approach:   
+ 
+Required statistical tools:  
 
 
-## Story point 2
-Q: What regions of Texas are the highest yielding environments for sorghum hybrids?
+## Grain Sorghum Yields in Texas Counties 
 
-Approach:
-
-Required statistical tools:
-
-
-## Story point 3
-Q:
-
-Approach:
+Approach: Chloropleth Map
 
 Required statistical tools:
 
