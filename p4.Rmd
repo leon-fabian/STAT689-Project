@@ -58,7 +58,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Advances in breeding, technology, production, and management all led to higher sorghum yields for our state. How have sorghum yields changed over time and what time periods saw the greatest increases in yield?
 
-This analysis will be implemented as a *line graph* with range sliders for the year range. The `plotly` package will be used to execute this visualization. The line graph is an appropiate approach because metrics of sorghum performance (i.e. grain yield) are continuous variables along a time series.
+This analysis will be implemented as a *line graph* with range sliders for the year range. The `plotly` package will be used to execute this visualization. The line graph is a justified approach because metrics of sorghum performance (i.e. grain yield) are continuous variables along a time series.
 
 
 ## What physiological dependencies are there between agronomic traits? 
@@ -70,21 +70,25 @@ This visualization will consist of an interactive *scatterplot* window that plot
 
 ## What counties of Texas are the highest yielding environments for sorghum hybrids?  
 
-This analysis will consist of a *Chloropleth Map* of average yields per county. The map would be dynamic and allow the person to hover over counties to get more information on the county's yield numbers and the datapoints which led to those figures. The chloropleth map will be implemented with the `plotly` package. The chloropleth map approach is justified as it can efficiently display the continuous yield data on geospatial points which correspond to counties in our dataset. 
+This analysis will consist of a *Chloropleth Map* of average yields per county. The map would be dynamic and allow the person to hover over counties to get more information on the county's yield numbers and the datapoints which led to those figures. The chloropleth map will be implemented with the `plotly` package. The chloropleth map approach is appropriate since it can efficiently display the continuous yield data on geospatial points which correspond to counties in our dataset. 
 
 
 ## Which brands have released the most hybrids over the years?
 
-The dataset is representative of 180 company brands which have produced the ~4000 hybrids in the trials. Which brands were most profilic in releasing hybrids and when? 
+The dataset is representative of 180 company brands which have produced the ~4000 hybrids in the trials. Which brands were most profilic in releasing hybrids over the years? 
 
 A *racing bar chart* would allow us to visualize the accumulation of hybrids (a continuous variable) from each brand over the years. The racing bar chart would be implemented using the `ddplot` package in R. 
 
 
 ## Which major environmental and/or management scenarios lead to higher yields? (Prediction)
 
-A linear mixed model where Yield = County + Hybrid + Year + Irrigation + Previous Crop + Total Moisture …
+To understand what environmental or management factors affect sorghum yields, we will conduct a *linear mixed model* analysis with explanatory variables fitted to yield as follows: 
 
+$$
+Yield = Location + Year + Hybrid + Hybrid*Location + Irrigation + Previous Crop + Rainfall + Planting Density 
+$$
 
+Significance of the effects and the variance explained by the predictor variables will be reported with an *ANOVA* table. Additionally, the model will then be plotted as a *scatterplots* to visualize the effects and their interactions. The linear mixed model framework is justified since many of the environmental and management factors have the potential for second or third order interactions and will need to be evaluated for their contributions to yield variation.
 
 
 

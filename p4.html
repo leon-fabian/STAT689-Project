@@ -401,7 +401,7 @@ h4.author {
 <div id="how-have-texas-sorghum-yields-improved-over-time" class="section level2">
 <h2>How have Texas’ sorghum yields improved over time?</h2>
 <p>Advances in breeding, technology, production, and management all led to higher sorghum yields for our state. How have sorghum yields changed over time and what time periods saw the greatest increases in yield?</p>
-<p>This analysis will be implemented as a <em>line graph</em> with range sliders for the year range. The <code>plotly</code> package will be used to execute this visualization.</p>
+<p>This analysis will be implemented as a <em>line graph</em> with range sliders for the year range. The <code>plotly</code> package will be used to execute this visualization. The line graph is a justified approach because metrics of sorghum performance (i.e. grain yield) are continuous variables along a time series.</p>
 </div>
 <div id="what-physiological-dependencies-are-there-between-agronomic-traits" class="section level2">
 <h2>What physiological dependencies are there between agronomic traits?</h2>
@@ -410,16 +410,20 @@ h4.author {
 </div>
 <div id="what-counties-of-texas-are-the-highest-yielding-environments-for-sorghum-hybrids" class="section level2">
 <h2>What counties of Texas are the highest yielding environments for sorghum hybrids?</h2>
-<p>This analysis will consist of a <em>Chloropleth Map</em> of average yields per county. The map would be dynamic and allow the person to hover over counties to get more information on the county’s yield numbers and the datapoints which led to those figures. The chloropleth map will be implemented with the <code>plotly</code> package.</p>
+<p>This analysis will consist of a <em>Chloropleth Map</em> of average yields per county. The map would be dynamic and allow the person to hover over counties to get more information on the county’s yield numbers and the datapoints which led to those figures. The chloropleth map will be implemented with the <code>plotly</code> package. The chloropleth map approach is appropriate since it can efficiently display the continuous yield data on geospatial points which correspond to counties in our dataset.</p>
 </div>
 <div id="which-brands-have-released-the-most-hybrids-over-the-years" class="section level2">
 <h2>Which brands have released the most hybrids over the years?</h2>
-<p>The dataset is representative of 180 company brands which have produced the ~4000 hybrids in the trials. Which brands were most profilic in releasing hybrids and when?</p>
-<p>A <em>racing bar chart</em> would allow us to visualize the accumulation of hybrids from each brand over the years. The racing bar chart would be implemented using the <code>ddplot</code> package in R.</p>
+<p>The dataset is representative of 180 company brands which have produced the ~4000 hybrids in the trials. Which brands were most profilic in releasing hybrids over the years?</p>
+<p>A <em>racing bar chart</em> would allow us to visualize the accumulation of hybrids (a continuous variable) from each brand over the years. The racing bar chart would be implemented using the <code>ddplot</code> package in R.</p>
 </div>
 <div id="which-major-environmental-andor-management-scenarios-lead-to-higher-yields-prediction" class="section level2">
 <h2>Which major environmental and/or management scenarios lead to higher yields? (Prediction)</h2>
-<p>A linear mixed model where Yield = County + Hybrid + Year + Irrigation + Previous Crop + Total Moisture …</p>
+<p>To understand what environmental or management factors affect sorghum yields, we will conduct a <em>linear mixed model</em> analysis with explanatory variables fitted to yield as follows:</p>
+<p><span class="math display">\[
+Yield = Location + Year + Hybrid + Hybrid*Location + Irrigation + Previous Crop + Rainfall + Planting Density 
+\]</span></p>
+<p>Significance of the effects and the variance explained by the predictor variables will be reported with an <em>ANOVA</em> table. Additionally, the model will then be plotted as a <em>scatterplots</em> to visualize the effects and their interactions. The linear mixed model framework is justified since many of the environmental and management factors have the potential for second or third order interactions and will need to be evaluated for their contributions to yield variation.</p>
 </div>
 
 
