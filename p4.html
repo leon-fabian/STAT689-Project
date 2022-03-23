@@ -345,7 +345,7 @@ pre code {
 
 
 <h1 class="title toc-ignore"><center>
-P4 - Data Analysis
+P4 - Data Analysis Proposal
 </center></h1>
 <h4 class="author"><center>
 Ram Pangaluri, Ashok Shanker, Fabian Leon
@@ -400,32 +400,26 @@ h4.author {
 <!-- Begin document -->
 <div id="how-have-texas-sorghum-yields-improved-over-time" class="section level2">
 <h2>How have Texas’ sorghum yields improved over time?</h2>
-<p>Advances in breeding, technology, production, and management all lead to higher sorghum yields. How have sorghum yields changed over time and what time periods saw the greatest increases in yield?</p>
-<p>Range Sliders and Selectors in R will be implemented via line graphs. Plotting will be done with the plotly package.</p>
+<p>Advances in breeding, technology, production, and management all led to higher sorghum yields for our state. How have sorghum yields changed over time and what time periods saw the greatest increases in yield?</p>
+<p>This analysis will be implemented as a <em>line graph</em> with range sliders for the year range. The <code>plotly</code> package will be used to execute this visualization.</p>
 </div>
-<div id="what-physiological-dependencies-are-there-between-hybrid-traits" class="section level2">
-<h2>What physiological dependencies are there between hybrid traits?</h2>
-<p>For example, is there a relationship between a sorghum hybrid’s height and how long it will take to flower?</p>
-<p>Correlogram of hybrid traits</p>
-<p>Pearson’s R correlation implemented in r with ggplot2 and ggpairs packages</p>
+<div id="what-physiological-dependencies-are-there-between-agronomic-traits" class="section level2">
+<h2>What physiological dependencies are there between agronomic traits?</h2>
+<p>For example, is there a relationship between a sorghum hybrid’s height and how long it will take to flower? Do taller hybrids yield more? Do hybrids which reach maturity faster have higher yields?</p>
+<p>This visualization will consist of an interactive <em>scatterplot</em> window that plots and displays <em>pearson’s R</em> for whichever two variables the person selects from a drop down menu of relevant agronomic traits like yield, plant height, exsertion, days to flowering, etc. The visualization will be implemented using the <code>ggplot2</code>, <code>shiny</code>, and <code>shinydashboard</code> packages.</p>
 </div>
 <div id="what-counties-of-texas-are-the-highest-yielding-environments-for-sorghum-hybrids" class="section level2">
 <h2>What counties of Texas are the highest yielding environments for sorghum hybrids?</h2>
-<p>Approach: Chloropleth Map</p>
-<p>Required statistical tools:</p>
+<p>A <em>Chloropleth Map</em> of average yields per county. The map would be dynamic and allow the person to hover over counties to get more information on the county’s yield numbers and the datapoints which led to those figures. The chloropleth map will be implemented with the <code>plotly</code> package.</p>
 </div>
-<div id="grain-sorghum-traits-in-texas-counties" class="section level2">
-<h2>Grain Sorghum Traits in Texas Counties</h2>
-<p>A nonlinear iterative partial least squares (nipals) principal component analysis (PCA) will be conducted on the calculated trait BLUPs attributable to counties from a linear mixed model analysis of Texas AgriLife data wherein traits of interest (yield, plant height, testweight, days to flowering, etc.) will be fitted to an all random model including year, county, hybrid, irrigation,</p>
-<p><span class="math display">\[
-\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
-\]</span></p>
+<div id="which-brands-have-released-the-most-hybrids-over-the-years" class="section level2">
+<h2>Which brands have released the most hybrids over the years?</h2>
+<p>The dataset is representative of 180 company brands which have produced the ~4000 hybrids in the trials. Which brands were most profilic in releasing hybrids and when?</p>
+<p>A <em>racing bar chart</em> would allow us to visualize the accumulation of hybrids from each brand over the years. The racing bar chart would be implemented using the <code>ddplot</code> package in R.</p>
 </div>
-<div id="story-point-5" class="section level2">
-<h2>Story point 5</h2>
-<p>Q:</p>
-<p>Approach:</p>
-<p>Required statistical tools:</p>
+<div id="which-major-environmental-andor-management-scenarios-lead-to-higher-yields-prediction" class="section level2">
+<h2>Which major environmental and/or management scenarios lead to higher yields? (Prediction)</h2>
+<p>A linear mixed model where Yield = County + Hybrid + Year + Irrigation + Previous Crop + …</p>
 </div>
 
 

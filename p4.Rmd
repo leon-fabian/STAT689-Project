@@ -1,9 +1,8 @@
 ---
-title: <center> P4 - Data Analysis </center>
+title: <center> P4 - Data Analysis Proposal </center>
 author: <center> Ram Pangaluri, Ashok Shanker, Fabian Leon </center>
 output: html_document
 ---
-
 
 <!-- Changing the fonts and style to fit more into less pages -->
 <style type="text/css">
@@ -55,64 +54,42 @@ h4.author {
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-
 ## How have Texas' sorghum yields improved over time?
-Advances in breeding, technology, production, and management all lead to higher sorghum yields. How have sorghum yields changed over time and what time periods saw the greatest increases in yield?
 
-Range Sliders and Selectors in R will be implemented via line graphs. Plotting will be done with the plotly package. 
+Advances in breeding, technology, production, and management all led to higher sorghum yields for our state. How have sorghum yields changed over time and what time periods saw the greatest increases in yield?
 
+This analysis will be implemented as a *line graph* with range sliders for the year range. The `plotly` package will be used to execute this visualization.
 
+## What physiological dependencies are there between agronomic traits? 
 
-## What physiological dependencies are there between hybrid traits? 
-For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower?   
+For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower? Do taller hybrids yield more? Do hybrids which reach maturity faster have higher yields?
 
-
-For example, is there a relationship between a sorghum hybrid's height and how long it will take to flower? An interactive scatterplot that plots and displays pearson’s R for whichever two variables the person selects. 
-
-or 
-
-Correlogram of hybrid traits  
-Pearson's R correlation implemented in r with ggplot2 and ggpairs packages  
+This visualization will consist of an interactive *scatterplot* window that plots and displays *pearson’s R* for whichever two variables the person selects from a drop down menu of relevant agronomic traits like yield, plant height, exsertion, days to flowering, etc. The visualization will be implemented using the `ggplot2`, `shiny`, and `shinydashboard` packages.
 
 
 ## What counties of Texas are the highest yielding environments for sorghum hybrids?  
 
-A Chloropleth Map of average yields per county. The map would be dynamic and 
-
-Required statistical tools:
+This analysis will consist of a *Chloropleth Map* of average yields per county. The map would be dynamic and allow the person to hover over counties to get more information on the county's yield numbers and the datapoints which led to those figures. The chloropleth map will be implemented with the `plotly` package.
 
 
-## Grain Sorghum Traits in Texas Counties 
+## Which brands have released the most hybrids over the years?
+
+The dataset is representative of 180 company brands which have produced the ~4000 hybrids in the trials. Which brands were most profilic in releasing hybrids and when? 
+
+A *racing bar chart* would allow us to visualize the accumulation of hybrids from each brand over the years. The racing bar chart would be implemented using the `ddplot` package in R. 
 
 
+## Which major environmental and/or management scenarios lead to higher yields? (Prediction)
 
-
-
-A nonlinear iterative partial least squares (nipals) principal component analysis (PCA) will be conducted on the calculated trait BLUPs attributable to counties from a linear mixed model analysis of Texas AgriLife data wherein traits of interest (yield, plant height, testweight, days to flowering, etc.) will be fitted to an all random model including year, county, hybrid, irrigation, 
- 
-
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
-library(equatiomatic)
-library(lme4)
-
-data = read.csv("data/data.csv")
-str(data)
-
-fit <- lm(GY ~ Hybrid + County + Hybrid*County + Total.Moisture + Previous.Crop + Maturity + Days.from.Plant.to.Harvest, data)
-# show the theoretical model
-equatiomatic::extract_eq(fit)
-
-```
+A linear mixed model where Yield = County + Hybrid + Year + Irrigation + Previous Crop + Total Moisture …
 
 
 
 
-## Story point 5
-Q:
 
-Approach:
 
-Required statistical tools:
+
+
 
 
 
