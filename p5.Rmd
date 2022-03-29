@@ -1,0 +1,80 @@
+---
+title: <center> P5 - Interaction </center>
+author: <center> Ram Pangaluri, Ashok Shanker, Fabian Leon </center>
+output: html_document
+---
+
+<!-- Changing the fonts and style to fit more into less pages -->
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 12px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 18px;
+  color: Black;
+}
+h1 { /* Header 1 */
+  font-size: 18px;
+  color: Black;
+}
+h2 { /* Header 2 */
+    font-size: 16px;
+  color: Black;
+}
+h3 { /* Header 3 */
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+  color: Black;
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+h4.author {
+  font-size: 12px;
+  color: DarkBlue;
+}
+</style>
+
+<!-- ## Grading Rubric -->
+
+<!-- Create a list of the interactions you will accommodate in your final project.  Ideally, you should have a good idea of how people will interact with your dashboard/project and the affordances and limitations of your interactions.   -->
+
+<!-- This should include a description of each interaction - for example, what events will trigger, how will the interaction change the data - we don't have to know how to do everything yet - but just an idea of sample scenarios of how users can interact with your project.  -->
+
+<!-- Submit one pdf per group. -->
+
+
+
+<!-- Begin document -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Range slider
+Line Graph 
+
+# Interactive Variable Selection for Scatterplot
+selectable variables from dropdown menu 
+
+# Hover Information
+Chloropleth map of average yields per county with information available upon hovering
+
+# Animation - Racing bar graph
+to visualize the accumulation of hybrids (a continuous variable) from each brand over the years. The racing bar chart would be implemented using the ddplot package in R.
+
+
+
+
+
+
+
