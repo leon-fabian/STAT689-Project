@@ -52,13 +52,11 @@ h4.author {
 <!-- Submit one pdf per group. -->
 
 
-
 <!-- Begin document -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 
 # Range slider
 
