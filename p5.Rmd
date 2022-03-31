@@ -1,11 +1,10 @@
 ---
-title: <center> P5 - Interaction </center>
+title: <center> P5 - Interactions </center>
 author: <center> Ram Pangaluri, Ashok Shanker, Fabian Leon </center>
 output: html_document
 ---
 
 <!-- Changing the fonts and style to fit more into less pages -->
-
 <style type="text/css">
 
 body{ /* Normal  */
@@ -41,6 +40,11 @@ h4.author {
   font-size: 12px;
   color: DarkBlue;
 }
+.col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
 </style>
 
 <!-- ## Grading Rubric -->
@@ -54,42 +58,36 @@ h4.author {
 
 <!-- Begin document -->
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Range slider
 
-Line Graph with range slider to see how sorghum yields(y-axis) changed over time and what time periods saw the greatest increases in yield. Users can interact and more closely inspect the data by specifying year ranges(x-axis). A wider range will include more data, while a shorter range will restrict the data. This will be used when the user wants to examine a limited time range of the data.
+Line Graph with range slider to see how sorghum yields (y-axis) changed over time and what time periods saw the greatest increases in yield. Users can interact and more closely inspect the data by specifying year ranges (x-axis). A wider range will include more data, while a shorter range will restrict the data. This will be used when the user wants to examine a limited time range of the data.
 
 <center>
-![](images/p5_timeseries_rangeslider.png){width=50%}
+![](images/p5_timeseries_rangeslider.png){width=40%} 
 </center>
 
 
 # Interactive Variable Selection for Scatterplot
 
-A drop-down menu with variables (yield, plant height, excertion, etc.) can be selected to have an interactive scatterplot window that plots and additionally displays pearson’s R. It is used to see correlation/relationship between variables. Based on user selections the scatterplot shown will change.
+A drop-down menu of variables will allow the user an interactive scatterplot window that plots and additionally displays pearson’s R for the relationship between the two variables selected. The drop menu of variables will include agronomic traits which serve as measures of grain sorghum performance and physiology (i.e. yield, plant height, exsertion, testweight, etc.).
 
 <center>
-![](images/dropdown-menu-for-scatterplot.png){width=50%}
+![](images/dropdown-menu-for-scatterplot.png){width=40%}
 </center>
 
-# Hover Information
 
-Chloropleth map of average yields per county will be displayed. Upon hovering over a county, the county name and average yield for that county will be shown. This will be used when the user wants to examine the specifics for any particular county.
+# Chloropleth Map - Hover Information
+
+A chloropleth map of average yields per county will be displayed. Upon hovering over a county, the county name and average yield for that county will be shown. This will be used when the user wants to examine the specifics for any particular county.
 
 <center>
-![](images/p5_hover_chloropleth.png){width=50%}
+![](images/p5_hover_chloropleth.png){width=40%} ![](images/p5_racingbar.png){width=40%}
 </center>
 
 # Animation - Racing bar graph
 
-To visualize the accumulation of hybrids(x-axis) from each brand(y-axis) over the years. This will be used when the user wants to see changes over time between the relationship of hybrid accumulation and brand name. As the time series continues on brand names may switch positions based on their respective number of hybrids.
+A racing bar grap will be used to visualize the accumulation of hybrids (x-axis) from each brand (y-axis) over the years. This will be used when the user wants to see changes over time between the relationship of hybrid accumulation and brand name. As the time series continues, brand names will switch positions based on their respective number of hybrids produced.
 
-<center>
-![](images/p5_racingbar.png){width=50%}
-</center>
 
 
 
