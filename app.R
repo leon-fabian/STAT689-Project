@@ -28,7 +28,7 @@ usda = data[which(data$Dataset == "USDA"),]
 txar = data[which(data$Dataset == "TXAR"),]
 
 
-
+traits = c("DA", "PH", "EX", "GY")
 
 ##### UI ##### 
 ui <- navbarPage("Texas Grain Sorghum",
@@ -36,12 +36,14 @@ ui <- navbarPage("Texas Grain Sorghum",
                  # Line Graph
                  tabPanel("Historical Yield Improvements",
                           sidebarLayout(
-                            sidebarPanel(selectInput("Dataset", choices = c("usda", "txar"))),
-                            mainPanel(sliderInput("slider", label = "Date Range",
-                                                  min = min(txar$Year),
-                                                  max = max(txar$Year),
-                                                  value=c(min(txar$Year), max(txar$Year))),
-                                      plotOutput("linegraph"))
+                            sidebarPanel(),
+                            mainPanel(
+                              plotOutput("linegraph"),
+                              sliderInput("slider", label = "Date Range",
+                                          min = min(txar$Year),
+                                          max = max(txar$Year),
+                                          value=c(min(txar$Year), max(txar$Year)))
+                            )
                           )
                  ),
                  
@@ -79,10 +81,11 @@ ui <- navbarPage("Texas Grain Sorghum",
 server <- function(input, output) {
   
   # Line Graph 
-  output$linegraph = renderPlot({
-      ggplot(input$Dataset, aes(x = Year, y = GY)) + 
-      geom_smooth +
-      coord_cartesian(xlim = input$slider)
+    output$linegraph = renderPlot({
+      ggplot(txar, aes(x = Year, y = GY)) + 
+      geom_smooth() +
+      coord_cartesian(xlim = input$slider) + 
+      theme_minimal()
   })
   
   
