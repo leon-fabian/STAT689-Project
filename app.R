@@ -10,6 +10,8 @@ library(shiny)
 library(ggplot2)
 library(shinydashboard)
 library(plotly)
+library(dplyr)
+library(readr)
 
 # Read Dataset
 data = read.csv("data/data.csv")
@@ -88,7 +90,7 @@ ui <- dashboardPage(
               # NEED TO DISPLAY PEARSON'S R AND/OR PLOT SMOOTHED LINE TO THE RELATIONSHIP
       ),
       
-      # Chloropleth map
+      # Choropleth map
       tabItem(tabName = "Map"
               #h2("Chloropleth map of average yield per county")
       ),
@@ -125,9 +127,50 @@ server = function(input, output) {
       geom_point()
   })
   
-  # Chloropleth map
+  # Choropleth map
+  counties_df = read.csv("data/TX-FIPS.csv", fileEncoding = 'UTF-8-BOM') #GET TX COUNTY CODES DATA read.csv("new_dataset_with_county_codes.csv")
+    
+  
+  usda_df = usda %>% 
+    inner_join(counties_df, by.x = County, by.y = County) %>%
+    select(Year, County, FIPS, bu.per.acre.Yield) %>% 
+    mutate(hover = paste0(County, "\n", bu.per.acre.Yield, " bu/ac"))
+  
+  fontStyle = list(
+    family = "DM Sans",
+    size = 15, 
+    color = "black"
+  )
   
   
+  label = list(
+    bgcolor = "#EEEEEE",
+    bordercolor = "transparent",
+    font = fontStyle
+  )
+  
+  
+  
+  yield_map = plot_geo(usda_df, 
+                       locationmode = 'geojson-id', 
+                       frame = ~Year) %>% 
+    add_trace(type = "choropleth",
+              geojson = usda_df, 
+              locations = ~FIPS,
+              z = ~bu.per.acre.Yield,
+              zmin = 0,
+              zmax = max(usda_df$bu.per.acre.Yield),
+              color = ~bu.per.acre.Yield,
+              text = ~hover,
+              hoverinfo = 'text',
+              colorscale = 'Electric') %>%
+    layout(geo = list(scope = 'Texas'),
+           font = list(family = "DM Sans"),
+           title = "Grain Sorghum Yields\n 1970 - 2020") %>%
+    style(hoverlabel = label) %>%
+    config(displayModeBar = FALSE)
+  
+  yield_map
   # Racing Bars
   
 
