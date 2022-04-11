@@ -33,7 +33,7 @@ traits = c("DA", "PH", "EX", "GY")
 ##### UI ##### 
 ui <- navbarPage("Texas Grain Sorghum",
                  
-                 # Line Graph
+                 # Line Graph - Need a different layout to get rid of empty side panel
                  tabPanel("Historical Yield Improvements",
                           sidebarLayout(
                             sidebarPanel(),
@@ -60,7 +60,7 @@ ui <- navbarPage("Texas Grain Sorghum",
                           )
                  ),
                  
-                 # chloropleth map         
+                 # Chloropleth map         
                  tabPanel("Map"
                           
                  ), 
@@ -95,6 +95,7 @@ server <- function(input, output) {
       geom_point()
   })
   
+  # Chloropleth map
   
   
   
