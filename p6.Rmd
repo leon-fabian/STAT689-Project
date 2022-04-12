@@ -1,0 +1,81 @@
+---
+title: <center> P6 - Data Visualization </center>
+author: <center> Ram Pangaluri, Ashok Shanker, Fabian Leon </center>
+output: html_document
+---
+
+<!-- Changing the fonts and style to fit more into less pages -->
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 12px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 18px;
+  color: Black;
+}
+h1 { /* Header 1 */
+  font-size: 18px;
+  color: Black;
+}
+h2 { /* Header 2 */
+    font-size: 16px;
+  color: Black;
+}
+h3 { /* Header 3 */
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+  color: Black;
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+h4.author {
+  font-size: 12px;
+  color: DarkBlue;
+}
+</style>
+
+
+<!-- ## Grading Rubric -->
+<!-- 3 pages maximum -->
+<!-- take inspiration from your project pitch -->
+
+<!-- choose 4-6 chart types to showcase, make these as interactive as possible. one of these should be a predictive graph. -->
+<!-- one of these should be a map of spatial components. -->
+
+<!-- outline the 5 storypoints -->
+
+<!-- Provide a clear description of why these visualizations are appropriate for your data using RMarkdown report not to exceed 3 pages (including visuals)  -->
+
+<!-- Begin document -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
