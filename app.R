@@ -12,6 +12,7 @@ library(shinydashboard)
 library(plotly)
 library(dplyr)
 library(readr)
+library(RColorBrewer)
 
 # Read Dataset
 data = read.csv("data/data.csv")
@@ -128,9 +129,10 @@ server = function(input, output) {
   })
   
   # Choropleth map
-  counties_df = read.csv("data/TX-FIPS.csv", fileEncoding = 'UTF-8-BOM') #GET TX COUNTY CODES DATA read.csv("new_dataset_with_county_codes.csv")
+  output$map = renderPlotly({
     
-  
+  counties_df = read.csv("data/TX-FIPS.csv", fileEncoding = 'UTF-8-BOM') 
+    
   usda_df = usda %>% 
     inner_join(counties_df, by.x = County, by.y = County) %>%
     select(Year, County, FIPS, bu.per.acre.Yield) %>% 
@@ -142,20 +144,23 @@ server = function(input, output) {
     color = "black"
   )
   
-  
   label = list(
     bgcolor = "#EEEEEE",
     bordercolor = "transparent",
     font = fontStyle
   )
   
+  # Get geojson file of Texas county geometry
+  library(geojsonR)
+  file_js = FROM_GeoJson(url_file_string = "data/Texas Counties Map.geojson")
   
-  
+
+  # plot map
   yield_map = plot_geo(usda_df, 
                        locationmode = 'geojson-id', 
                        frame = ~Year) %>% 
     add_trace(type = "choropleth",
-              geojson = usda_df, 
+              geojson = file_js, 
               locations = ~FIPS,
               z = ~bu.per.acre.Yield,
               zmin = 0,
@@ -163,14 +168,16 @@ server = function(input, output) {
               color = ~bu.per.acre.Yield,
               text = ~hover,
               hoverinfo = 'text',
-              colorscale = 'Electric') %>%
-    layout(geo = list(scope = 'Texas'),
+              colors = brewer.pal(11, "RdYlGn")) %>%
+    layout(geo = list(scope = 'Texas'), # HAVING TROUBLE NARROWING THE SCOPE TO JUST TEXAS - Fabian
            font = list(family = "DM Sans"),
            title = "Grain Sorghum Yields\n 1970 - 2020") %>%
     style(hoverlabel = label) %>%
     config(displayModeBar = FALSE)
   
-  yield_map
+  yield_map 
+  
+  })
   # Racing Bars
   
 
