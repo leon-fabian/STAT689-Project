@@ -43,6 +43,9 @@ usda_df = usda %>%
   select(Year, County, FIPS, bu.per.acre.Yield) %>% 
   mutate(hover = paste0(County, "\n", bu.per.acre.Yield, " bu/ac"))
 
+
+usda_df[, "FIPS_ST_CNTY_CD"] = as.character(usda_df[, "FIPS"])
+
 fontStyle = list(
   family = "DM Sans",
   size = 15, 
@@ -56,11 +59,7 @@ label = list(
 )
 
 library(geojsonR)
-file_js = FROM_GeoJson(url_file_string = "data/Texas Counties Map.geojson") # Get geojson file of Texas county geometry
-
-
-
-
+file_js = FROM_GeoJson(url_file_string = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/Texas_County_Boundaries/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson") # Get geojson file of Texas county geometry
 
 
 
@@ -164,6 +163,7 @@ server = function(input, output) {
   })
   
   # Choropleth map
+  
   output$map = renderPlotly({
     
     yield_map = plot_geo(usda_df, 
@@ -171,7 +171,7 @@ server = function(input, output) {
                          frame = ~Year) %>% 
       add_trace(type = "choropleth",
                 geojson = file_js, # geojson file that was read in
-                locations = ~FIPS, # FIPS = county id codes
+                locations = ~FIPS_ST_CNTY_CD, # FIPS = county id codes
                 z = ~bu.per.acre.Yield, 
                 zmin = 0,
                 zmax = max(usda_df$bu.per.acre.Yield),

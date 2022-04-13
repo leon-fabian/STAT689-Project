@@ -76,22 +76,30 @@ We utilize information from two sources for our visualizations. The first is com
 
 ![](images/project-outline.png){width=20%}
 
-## Line Graph
+## Historical Yield Improvements - Line Graph
 
 In the Historical Yield Improvements tab, we visualize how elite hybrids' average sorghum yields have changed over time and what time periods saw the greatest increases in yield from the TXAR data. This analysis is presented as a line graph with range sliders for ineteractive selection of a particular time period.
 
 ![](images/linegraph.png){width=20%}
 
-## Scatterplot
+## Traits Relationships - Scatterplot
 A scatterplot will be presented in the Traits Relationships tab. This visualization consists of an interactive scatterplot window that plots and displays pearson’s R for whichever two variables the user selects from a drop down menu of relevant agronomic traits like yield, plant height, exsertion, days to flowering, etc. This is carried out using the TXAR dataset of elite hybrids and can be used to visualize trait relationships in elite sorghum hybrids. 
 
 ![](images/traits-scatterplot.png){width=20%}
 
 
-## Choropleth Map
-This analysis will consist of a Chloropleth Map of average yields per county from the USDA data. The map would be dynamic and allow the person to hover over counties to get more information on the county's yield numbers and the datapoints which led to those figures.
+## Map - Choropleth Map
+This analysis will consist of a Chloropleth Map of average yields per county from the USDA data. The map would be dynamic and allow the person to hover over counties to get more information on the county's yield numbers and the datapoints which led to those figures. There will also be a range slider to change the year that is being visualized.
 
-## Racing Bar Chart
+![](images/ex-choropleth-of-texas.jpg){width=20%}
+
+
+## Company Brands - Racing Bar Chart
+
+The dataset is representative of 180 company brands which have produced the ~4000 hybrids in the trials. This animated gif presents which brands were most profilic in releasing these hybrids over the years by allowing us to see the accumulation of hybrids from each brand over the years.
+
+![](images/race.png){width=50%}
+
 
 
 ## Statistical Analysis
