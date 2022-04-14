@@ -16,6 +16,8 @@ library(plotly)
 library(dplyr)
 library(readr)
 library(RColorBrewer)
+library(leaflet)
+library(ggmap)
 
 # Read Dataset
 data = read.csv("data/data.csv")
@@ -121,13 +123,14 @@ ui <- dashboardPage(
                                 choices = traits)),
                 box(plotOutput("scatter", height = 300))
               )
-              # NEED TO DISPLAY PEARSON'S R AND/OR PLOT SMOOTHED LINE TO THE RELATIONSHIP
+              # NEED TO ADD DISPLAY OF PEARSON'S CORRELATION AND/OR PLOT SMOOTHED LINE TO THE RELATIONSHIP
       ),
       
       # Choropleth map
       tabItem(tabName = "Map",
               #h2("Chloropleth map of average yield per county")
-              fluidRow(box(plotlyOutput("map")))
+              fluidRow(box(plotlyOutput("map"))),
+              fluidRow(box(leafletOutput("leaf")))
       ),
       
       # Racing Bars
@@ -179,13 +182,22 @@ server = function(input, output) {
                 text = ~hover,
                 hoverinfo = 'text',
                 colors = brewer.pal(11, "RdYlGn")) %>%
-      layout(geo = list(scope = 'Texas'), # HAVING TROUBLE NARROWING THE SCOPE TO JUST TEXAS - Fabian
+      layout(geo = list(scope = 'usa'), # HAVING TROUBLE NARROWING THE SCOPE TO JUST TEXAS - Fabian
              font = list(family = "DM Sans"),
              title = "Grain Sorghum Yields\n 1970 - 2020") %>%
       style(hoverlabel = label) %>%
       config(displayModeBar = FALSE)
     
     yield_map 
+    
+    output$leaf = renderLeaflet({
+      leaflet() %>%
+        addTiles() %>%
+        addProviderTiles("Stamen") %>% 
+        setView(lat = 30.6, lng = -100, zoom = 5.35)  
+      
+    })
+    
     
   })
   
