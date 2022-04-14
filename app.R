@@ -17,7 +17,9 @@ library(dplyr)
 library(readr)
 library(RColorBrewer)
 library(leaflet)
+library(ddplot)
 library(ggmap)
+library(readxl)
 
 # Read Dataset
 data = read.csv("data/data.csv")
@@ -202,7 +204,22 @@ server = function(input, output) {
   })
   
   # Racing Bars
-  
+  remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE)
+  myTibble <- read_excel("myTibble.xlsx")
+  FINALAGRI_data <- read_excel("FINALAGRI_data.xlsx")
+  myTibble %>%
+    barChartRace(
+      x = "NumOfHybrids",
+      y = "Brand",
+      time = "Year",
+      title = "Popular Brands and their total hybrids over the Years"
+    )
+  mytibble <- as_tibble(FINALAGRI_data %>%
+                    distinct(Hybrid, Brand, Year) %>%
+                    group_by(Year,Brand) %>%
+                    summarize("Total Hybrids" = n()))
+
+
 
   # LMM Statistical Analysis & Predictions
   
