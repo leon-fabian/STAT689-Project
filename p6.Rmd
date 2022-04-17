@@ -104,6 +104,17 @@ The dataset is representative of 180 company brands which have produced the ~400
 
 ## Statistical Analysis
 
+In this tab, we attempt to understand what environmental or management factors affect sorghum yields via a linear mixed model analysis with explanatory variables fitted to yield as follows: 
+
+$$
+Yield = Location + Year + Hybrid + Hybrid*Location + Irrigation + Previous Crop + Rainfall + Planting Density 
+$$
+
+Significance of the effects and the variance explained by the predictor variables will be reported with an *ANOVA* table. The model will then be plotted as a *scatterplots* to visualize the effects and their interactions. The linear mixed model framework is justified since many of the environmental and management factors have the potential for second or third order interactions and will need to be evaluated for their contributions to yield variation.
+
+
+
+![](images/stats-scatterplot.png){width=40%}
 
 
 

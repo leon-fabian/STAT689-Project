@@ -21,6 +21,9 @@ library(ddplot)
 library(ggmap)
 library(readxl)
 
+# remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
+library(ddplot)
+
 # Read Dataset
 data = read.csv("data/data.csv")
 factors = c("Dataset", "Location", "County", "AgriLife.Region", "Region", "Irrigation", 
@@ -39,32 +42,23 @@ txar = data[which(data$Dataset == "TXAR"),]
 
 traits = c("Year", "DA", "PH", "EX", "GY")
 
-# For Choropleth Map
+### For Choropleth Map
 counties_df = read.csv("data/TX-FIPS.csv", fileEncoding = 'UTF-8-BOM') 
-
 usda_df = usda %>% 
   inner_join(counties_df, by.x = County, by.y = County) %>%
   select(Year, County, FIPS, bu.per.acre.Yield) %>% 
   mutate(hover = paste0(County, "\n", bu.per.acre.Yield, " bu/ac"))
-
-
 usda_df[, "FIPS_ST_CNTY_CD"] = as.character(usda_df[, "FIPS"])
-
-fontStyle = list(
-  family = "DM Sans",
-  size = 15, 
-  color = "black"
-)
-
-label = list(
-  bgcolor = "#EEEEEE",
-  bordercolor = "transparent",
-  font = fontStyle
-)
-
+fontStyle = list(family = "DM Sans", size = 15, color = "black")
+label = list(bgcolor = "#EEEEEE", bordercolor = "transparent", font = fontStyle)
 library(geojsonR)
 file_js = FROM_GeoJson(url_file_string = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/Texas_County_Boundaries/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson") # Get geojson file of Texas county geometry
 
+#### For Racing Bar Chart
+myTibble <- as_tibble(txar %>%
+                        distinct(Hybrid, Brand, Year) %>%
+                        group_by(Year,Brand) %>%
+                        summarize("Total Hybrids" = n()))
 
 
 
@@ -137,7 +131,8 @@ ui <- dashboardPage(
       
       # Racing Bars
       tabItem(tabName = "brands",
-              h2("Accumulated numbers of Hybrids submitted over the years")
+              h2("Accumulated numbers of Hybrids submitted over the years"),
+              fluidRow(box(plotlyOutput("bars")))
       ),
       
       # LMM Statistical Analysis & Predictions
@@ -199,27 +194,27 @@ server = function(input, output) {
         setView(lat = 30.6, lng = -100, zoom = 5.35)  
       
     })
-    
-    
   })
   
   # Racing Bars
-  remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE)
-  myTibble <- read_excel("myTibble.xlsx")
-  FINALAGRI_data <- read_excel("FINALAGRI_data.xlsx")
-  myTibble %>%
-    barChartRace(
-      x = "NumOfHybrids",
-      y = "Brand",
-      time = "Year",
-      title = "Popular Brands and their total hybrids over the Years"
-    )
-  mytibble <- as_tibble(FINALAGRI_data %>%
-                    distinct(Hybrid, Brand, Year) %>%
-                    group_by(Year,Brand) %>%
-                    summarize("Total Hybrids" = n()))
+  output$bars = renderPlot({
+    
+    myTibble %>%
+      barChartRace(
+        x = "Total Hybrids",
+        y = "Brand",
+        time = "Year",
+        title = "Popular Brands and their total hybrids over the Years",
+        frameDur = 750,
+        colorCategory = "Dark2",
+        panelcol = "white",
+        bgcol = "#DCDCDC",  # a light gray
+        xgridlinecol = "#EBEBEBFF",
+        timeLabelOpts = list(size = 16)
+      )
 
-
+  
+  })
 
   # LMM Statistical Analysis & Predictions
   
