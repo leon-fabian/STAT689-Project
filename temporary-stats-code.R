@@ -29,7 +29,10 @@ str(txar)
 # (1|County:Year) + (1|County:Hybrid) + (1|Year:Hybrid) 
 
 
-model = lm(GY ~ Year + Maturity, txar)
+model = lm(GY ~ Year + Total.Moisture, txar)
+
+anova(model)
+
 
 
 ggPredict(model)
