@@ -21,6 +21,9 @@ library(ggmap)
 library(readxl)
 library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
 library(geojsonR)
+library(rjson)
+
+
 
 # Read Dataset
 data = read.csv("data/data.csv")
@@ -53,12 +56,6 @@ label = list(bgcolor = "#EEEEEE", bordercolor = "transparent", font = fontStyle)
 
 
 file_js = fromJSON(file = "https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json") # Get geojson file of Texas county geometry
-
-g = list(scope = 'texas',
-          projection = list(type = 'albers usa'),
-          showlakes = TRUE,
-          lakecolor = toRGB('white'))
-
 
 
 #### For Racing Bar Chart
@@ -130,7 +127,7 @@ ui <- dashboardPage(
       # Choropleth map
       tabItem(tabName = "Map",
               #h2("Chloropleth map of average yield per county")
-              fluidRow(box(plotlyOutput("map"))))
+              fluidRow(box(plotlyOutput("map")))
       ),
       
       # Racing Bars
@@ -145,9 +142,7 @@ ui <- dashboardPage(
       )
     )
   )
-
-
-
+) 
 
 
 ####### Server #########
@@ -169,21 +164,22 @@ server = function(input, output) {
   # Choropleth map
   output$map = renderPlotly({
     plot_ly() %>% 
-      add_trace(
-        type = "choropleth",
-        geojson = counties,
-        locations = usda_df$FIPS,
-        frame = usda_df$Year,
-        text = usda_df$hover,
-        z = usda_df$bu.per.acre.Yield,
-        colorscale = "Viridis",
-        zmin = 0,
-        zmax = max(usda_df$bu.per.acre.Yield),
-        marker = list(line=list(
-          width = 0))) %>% 
+      add_trace(type = "choropleth",
+                geojson = file_js,
+                locations = usda_df$FIPS,
+                frame = usda_df$Year,
+                text = usda_df$hover,
+                z = usda_df$bu.per.acre.Yield,
+                colorscale = "Jet",
+                zmin = 0,
+                zmax = max(usda_df$bu.per.acre.Yield),
+                marker = list(line = list(width = 0))) %>% 
       colorbar(title = "Yield (bu/acre") %>% 
       layout(title = "USDA Average Yield by County") %>% 
-      layout(geo = g)
+      layout(geo = list(scope = 'usa',
+                        projection = list(type = 'albers usa'),
+                        showlakes = TRUE,
+                        lakecolor = toRGB('white')))
   })    
     
 
