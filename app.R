@@ -6,7 +6,6 @@
 # https://rstudio.github.io/shinydashboard/appearance.html
 # https://rstudio.github.io/shinydashboard/structure.html
 
-
 ##### Code #####
 library(shiny)
 library(shinythemes)
@@ -20,9 +19,8 @@ library(leaflet)
 library(ddplot)
 library(ggmap)
 library(readxl)
-
-# remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
-library(ddplot)
+library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
+library(geojsonR)
 
 # Read Dataset
 data = read.csv("data/data.csv")
@@ -48,19 +46,26 @@ usda_df = usda %>%
   inner_join(counties_df, by.x = County, by.y = County) %>%
   select(Year, County, FIPS, bu.per.acre.Yield) %>% 
   mutate(hover = paste0(County, "\n", bu.per.acre.Yield, " bu/ac"))
-usda_df[, "FIPS_ST_CNTY_CD"] = as.character(usda_df[, "FIPS"])
+usda_df[, "FIPS_ST_CNTY_CD"] = as.character(usda_df[,"FIPS"])
+
 fontStyle = list(family = "DM Sans", size = 15, color = "black")
 label = list(bgcolor = "#EEEEEE", bordercolor = "transparent", font = fontStyle)
-library(geojsonR)
-file_js = FROM_GeoJson(url_file_string = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/Texas_County_Boundaries/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson") # Get geojson file of Texas county geometry
+
+
+file_js = fromJSON(file = "https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json") # Get geojson file of Texas county geometry
+
+g = list(scope = 'texas',
+          projection = list(type = 'albers usa'),
+          showlakes = TRUE,
+          lakecolor = toRGB('white'))
+
+
 
 #### For Racing Bar Chart
-myTibble <- as_tibble(txar %>%
+myTibble = as_tibble(txar %>%
                         distinct(Hybrid, Brand, Year) %>%
                         group_by(Year,Brand) %>%
                         summarize("Total Hybrids" = n()))
-
-
 
 
 ##### UI #####
@@ -125,8 +130,7 @@ ui <- dashboardPage(
       # Choropleth map
       tabItem(tabName = "Map",
               #h2("Chloropleth map of average yield per county")
-              fluidRow(box(plotlyOutput("map"))),
-              fluidRow(box(leafletOutput("leaf")))
+              fluidRow(box(plotlyOutput("map"))))
       ),
       
       # Racing Bars
@@ -141,7 +145,7 @@ ui <- dashboardPage(
       )
     )
   )
-)
+
 
 
 
@@ -163,42 +167,28 @@ server = function(input, output) {
   })
   
   # Choropleth map
-  
   output$map = renderPlotly({
+    plot_ly() %>% 
+      add_trace(
+        type = "choropleth",
+        geojson = counties,
+        locations = usda_df$FIPS,
+        frame = usda_df$Year,
+        text = usda_df$hover,
+        z = usda_df$bu.per.acre.Yield,
+        colorscale = "Viridis",
+        zmin = 0,
+        zmax = max(usda_df$bu.per.acre.Yield),
+        marker = list(line=list(
+          width = 0))) %>% 
+      colorbar(title = "Yield (bu/acre") %>% 
+      layout(title = "USDA Average Yield by County") %>% 
+      layout(geo = g)
+  })    
     
-    yield_map = plot_geo(usda_df, 
-                         locationmode = 'geojson-id', 
-                         frame = ~Year) %>% 
-      add_trace(type = "choropleth",
-                geojson = file_js, # geojson file that was read in
-                locations = ~FIPS_ST_CNTY_CD, # FIPS = county id codes
-                z = ~bu.per.acre.Yield, 
-                zmin = 0,
-                zmax = max(usda_df$bu.per.acre.Yield),
-                color = ~bu.per.acre.Yield,
-                text = ~hover,
-                hoverinfo = 'text',
-                colors = brewer.pal(11, "RdYlGn")) %>%
-      layout(geo = list(scope = 'usa'), # HAVING TROUBLE NARROWING THE SCOPE TO JUST TEXAS - Fabian
-             font = list(family = "DM Sans"),
-             title = "Grain Sorghum Yields\n 1970 - 2020") %>%
-      style(hoverlabel = label) %>%
-      config(displayModeBar = FALSE)
-    
-    yield_map 
-    
-    output$leaf = renderLeaflet({
-      leaflet() %>%
-        addTiles() %>%
-        addProviderTiles("Stamen") %>% 
-        setView(lat = 30.6, lng = -100, zoom = 5.35)  
-      
-    })
-  })
-  
+
   # Racing Bars
   output$bars = renderPlot({
-    
     myTibble %>%
       barChartRace(
         x = "Total Hybrids",
