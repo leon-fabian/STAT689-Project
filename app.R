@@ -23,8 +23,6 @@ library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignette
 library(geojsonR)
 library(rjson)
 
-
-
 # Read Dataset
 data = read.csv("data/data.csv")
 factors = c("Dataset", "Location", "County", "AgriLife.Region", "Region", "Irrigation", 
@@ -50,19 +48,23 @@ usda_df = usda %>%
   select(Year, County, FIPS, bu.per.acre.Yield) %>% 
   mutate(hover = paste0(County, "\n", bu.per.acre.Yield, " bu/ac"))
 usda_df[, "FIPS_ST_CNTY_CD"] = as.character(usda_df[,"FIPS"])
-
 fontStyle = list(family = "DM Sans", size = 15, color = "black")
 label = list(bgcolor = "#EEEEEE", bordercolor = "transparent", font = fontStyle)
-
-
 file_js = fromJSON(file = "https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json") # Get geojson file of Texas county geometry
-
 
 #### For Racing Bar Chart
 myTibble = as_tibble(txar %>%
                         distinct(Hybrid, Brand, Year) %>%
                         group_by(Year,Brand) %>%
                         summarize("Total Hybrids" = n()))
+
+myTibble$`Total Hybrids` = as.numeric(myTibble$`Total Hybrids`)
+length(unique(myTibble$Brand))
+
+myTibble = as_tibble(myTibble %>% 
+                       group_by(Brand) %>%
+                       mutate(cs = cumsum('Total Hybrids')))
+cumsum(x2[!is.na(x)])
 
 
 ##### UI #####
@@ -184,23 +186,26 @@ server = function(input, output) {
     
 
   # Racing Bars
-  output$bars = renderPlot({
-    myTibble %>%
+  output$bars = renderImage({
+    anim = myTibble %>%
       barChartRace(
         x = "Total Hybrids",
         y = "Brand",
         time = "Year",
         title = "Popular Brands and their total hybrids over the Years",
-        frameDur = 750,
+        frameDur = 100,
         colorCategory = "Dark2",
         panelcol = "white",
         bgcol = "#DCDCDC",  # a light gray
         xgridlinecol = "#EBEBEBFF",
         timeLabelOpts = list(size = 16)
       )
-
-  
-  })
+    anim_save("outfile.gif", animate(anim)) # New
+    # Return a list containing the filename
+    list(src = "outfile.gif", contentType = "image/gif")
+  },
+  deleteFile = TRUE
+  )
 
   # LMM Statistical Analysis & Predictions
   
