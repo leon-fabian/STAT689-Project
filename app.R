@@ -6,7 +6,7 @@
 # https://rstudio.github.io/shinydashboard/appearance.html
 # https://rstudio.github.io/shinydashboard/structure.html
 
-##### Code #####
+##### Load Libraries #####
 library(shiny)
 library(shinythemes)
 library(ggplot2)
@@ -23,8 +23,18 @@ library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignette
 library(geojsonR)
 library(rjson)
 
-# Read Dataset
-data = read.csv("data/data.csv")
+
+lm_eqn <- function(df){
+  m <- lm(y ~ x, df);
+  eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, 
+                   list(a = format(unname(coef(m)[1]), digits = 2),
+                        b = format(unname(coef(m)[2]), digits = 2),
+                        r2 = format(summary(m)$r.squared, digits = 3)))
+  as.character(as.expression(eq));
+}
+
+##### Read Dataset #####
+data = read.csv("data/data.csv", na.strings = c("",".","NA"))
 factors = c("Dataset", "Location", "County", "AgriLife.Region", "Region", "Irrigation", 
             "Hybrid", "Brand", "Maturity", "Previous.Crop")
 numerics = c("DA", "PH", "EX", "MST", "bu.per.acre.Yield", "lbs.per.ac.Yield", "GY", "Lodging", "RowWidth", 
@@ -41,7 +51,7 @@ txar = data[which(data$Dataset == "TXAR"),]
 
 traits = c("Year", "DA", "PH", "EX", "GY")
 
-### For Choropleth Map
+##### For Choropleth Map #####
 counties_df = read.csv("data/TX-FIPS.csv", fileEncoding = 'UTF-8-BOM') 
 usda_df = usda %>% 
   inner_join(counties_df, by.x = County, by.y = County) %>%
@@ -52,19 +62,18 @@ fontStyle = list(family = "DM Sans", size = 15, color = "black")
 label = list(bgcolor = "#EEEEEE", bordercolor = "transparent", font = fontStyle)
 file_js = fromJSON(file = "https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json") # Get geojson file of Texas county geometry
 
-#### For Racing Bar Chart
+##### For Racing Bar Chart #####
 myTibble = as_tibble(txar %>%
                         distinct(Hybrid, Brand, Year) %>%
                         group_by(Year,Brand) %>%
                         summarize("Total Hybrids" = n()))
 
-myTibble$`Total Hybrids` = as.numeric(myTibble$`Total Hybrids`)
-length(unique(myTibble$Brand))
-
-myTibble = as_tibble(myTibble %>% 
-                       group_by(Brand) %>%
-                       mutate(cs = cumsum('Total Hybrids')))
-cumsum(x2[!is.na(x)])
+# myTibble$`Total Hybrids` = as.numeric(myTibble$`Total Hybrids`)
+# length(unique(myTibble$Brand))
+# 
+# myTibble = as_tibble(myTibble %>% 
+#                        group_by(Brand) %>%
+#                        mutate(cs = cumsum('Total Hybrids')))
 
 
 ##### UI #####
@@ -100,8 +109,9 @@ ui <- dashboardPage(
       
       # Introduction
       tabItem(tabName = "intro",
-              h2("Crop testing program at Texas AgriLife")
-              # NEED TO ADD BACKGROUND ABOUT TEXAS AGRILIFE AND USDA AND GRAIN SORGHUM IN TEXAS
+              h2("Grain Sorghum Performance in Texas: 1970-2021"),
+              # home section
+              includeMarkdown("home.md")
       ),
       
       # Line Graph
@@ -113,7 +123,7 @@ ui <- dashboardPage(
               )
       ),
       
-      # Scatter plots
+      # Scatter plots 
       tabItem(tabName = "traits",
               h2("Correlations between metrics of hybrid performance"),
               fluidRow(
@@ -140,7 +150,8 @@ ui <- dashboardPage(
       
       # LMM Statistical Analysis & Predictions
       tabItem(tabName = "stats",
-              h2("Linear mixed model for factors influencing grain yields")
+              h2("Linear mixed model for factors influencing grain yields"),
+              includeMarkdown("p6.Rmd")
       )
     )
   )
@@ -152,15 +163,19 @@ server = function(input, output) {
   
   # Line Graph
   output$graph1 = renderPlotly({
-    p = ggplot(txar, aes(x = Year, y = GY)) +
-      geom_smooth()
+    p = ggplot(txar, aes(x = Year, y = lbs.per.ac.Yield)) + 
+      labs(x = "Year", y = "Grain Yield (lbs/ac)") +
+      geom_smooth() 
+      
     ggplotly(p)
   })
   
   # Scatter Plot
   output$scatter = renderPlot({
-    ggplot(txar, aes_string(x=input$scat_x, y=input$scat_y)) + 
-      geom_point()
+    ggplot(txar, aes_string(x = input$scat_x, y = input$scat_y)) + 
+      geom_point() +
+      geom_smooth()
+
   })
   
   # Choropleth map
