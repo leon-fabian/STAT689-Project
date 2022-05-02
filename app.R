@@ -140,7 +140,8 @@ ui <- dashboardPage(
       # Choropleth map
       tabItem(tabName = "Map",
               #h2("Chloropleth map of average yield per county")
-              fluidRow(box(plotlyOutput("map")))
+              fluidRow(box(plotlyOutput("map"))),
+              includeMarkdown("p5.Rmd")
       ),
       
       # Racing Bars

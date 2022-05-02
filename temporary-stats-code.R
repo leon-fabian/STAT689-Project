@@ -29,11 +29,38 @@ str(txar)
 # Yield = Location + Year + Hybrid + Hybrid*Location + Irrigation + Previous Crop + Rainfall 
 # (1|County:Year) + (1|County:Hybrid) + (1|Year:Hybrid) 
 
-model = lm(lbs.per.ac.Yield ~ Year + Irrigation, txar)
+##### Irrigation #####
+Irr.model = lm(lbs.per.ac.Yield ~ Year + Irrigation, txar)
+ggPredict(Irr.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
 
-anova(model)
+##### Total.Moisture #####
 
-ggPredict(model) + 
+Total.Moisture.model = lm(lbs.per.ac.Yield ~ Year + Total.Moisture, txar)
+
+ggPredict(Total.Moisture.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
+
+
+##### Lodging #####
+
+ldg.model = lm(lbs.per.ac.Yield ~ Year + Lodging, txar)
+
+ggPredict(ldg.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
+
+
+
+colnames(txar)
+
+##### Lodging #####
+
+ldg.model = lm(lbs.per.ac.Yield ~ Year + Lodging, txar)
+
+ggPredict(ldg.model) + 
   labs(x = "Year", y = "Yield (lbs/ac)") +
   theme_minimal()
 
