@@ -8,5 +8,6 @@ It has been made with [shiny](https://shiny.rstudio.com/) and you may find the c
 <br><br><br>
 
 ![](images/DSC_0745.jpg)
+<img src="images/DSC_0745.jpg" alt="Texas A&M AgriLife sign in front of sorghum trial" width="200"/>
 
 
