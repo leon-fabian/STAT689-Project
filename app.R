@@ -62,6 +62,7 @@ fontStyle = list(family = "DM Sans", size = 15, color = "black")
 label = list(bgcolor = "#EEEEEE", bordercolor = "transparent", font = fontStyle)
 file_js = fromJSON(file = "https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json") # Get geojson file of Texas county geometry
 
+
 ##### For Racing Bar Chart #####
 myTibble = as_tibble(txar %>%
                         distinct(Hybrid, Brand, Year) %>%
@@ -191,9 +192,11 @@ server = function(input, output) {
                 zmin = 0,
                 zmax = max(usda_df$bu.per.acre.Yield),
                 marker = list(line = list(width = 0))) %>% 
-      colorbar(title = "Yield (bu/acre") %>% 
-      layout(title = "USDA Average Yield by County") %>% 
-      layout(geo = list(scope = 'usa',
+      colorbar(title = "Yield (bu/acre)") %>% 
+      layout(title = "USDA: Average Yield (bu/ac)", 
+             geo = list(#scope = 'usa',
+                        lonaxis = list(range = c(25, 38)),
+                        lataxis = list(range = c(90, 105)),
                         projection = list(type = 'albers usa'),
                         showlakes = TRUE,
                         lakecolor = toRGB('white')))
