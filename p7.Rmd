@@ -19,8 +19,15 @@ The idea for this visualization project was to use the [Texas A&M Variety Testin
 ### Methodology
 Clearly state why & how can your data visualization be used to solve the research questions
 
+The generalized additive model's smoothed line graph of historical yields is a useful tool to see the peaks and valleys of sorghum yields throughout the years. From this plot, we can then retrospectively focus on a certain time period and reflect on what was happening in the industry at that time that might've caused such an increase or decrease in yields. 
 
+A biological system like a sorghum plant or a field of sorghum contains many dependencies and in some sense is a zero-sum system. The correlation plots on the "Trait Relationships" tabs between metrics of hybrid performance indicate the tradeoffs within this crop system. Strong associations can be exploited once visualized with a major example being the association between taller plant height and higher grain yield. 
 
+The choropleth map is a strong visual for historic progress as it allows for the reader to witness where the highest yielding sorghum production zones were in the state throughout history. Additionally this visual allows us to see the clear decline in the number of Texas counties that grew sorghum beginning in the early 2000s. This loss of sorghum acreage is very clearly reflected with the abscence of more and more counties as the map's slider progresses. 
+
+The grain sorghum industry, like the rest of the agricultural industry, has seen consolidation in companies working to produce new hybrid seeds. The racing bar chart in the "Company Brands" tab allows a visual representation of which company brands were most profilic in submitting new hybrid products to these trials throughout history. These bars reflect private seed companies and also public institutions that developed hybrids like Texas A&M or USDA agencies. 
+
+The final tab of the data visualization dashboard addresses the environmental variables and cultural practices affecting grain yield. The expressed aim of this analysis is to 
 
 
 
