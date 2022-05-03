@@ -128,7 +128,6 @@ ui <- dashboardPage(
               h2("Yield Improvements over the Years"),
               fluidRow(
                 box(plotlyOutput("graph1"))
-                # ADD BOX WITH A TIMELINE EXPLAINING UPS AND DOWNS
               )
       ),
       
@@ -142,7 +141,6 @@ ui <- dashboardPage(
                                 choices = traits)),
                 box(plotOutput("scatter", height = 300))
               )
-              # NEED TO ADD DISPLAY OF PEARSON'S CORRELATION AND/OR PLOT SMOOTHED LINE TO THE RELATIONSHIP
       ),
       
       # Choropleth map
@@ -154,10 +152,8 @@ ui <- dashboardPage(
       
       # Racing Bars
       tabItem(tabName = "brands",
-              h2("Accumulated numbers of Hybrids submitted over the years"),
-              fluidRow(box(plotlyOutput("bars")))
-              
-              
+              h2("Accumulated numbers of Hybrids submitted over the years")
+              # fluidRow(box(plotlyOutput("bars")))
       ),
       
       # LMM Statistical Analysis & Predictions
@@ -223,26 +219,25 @@ server = function(input, output) {
     
 
   # Racing Bars
-  output$bars = renderImage({
-    anim = myTibble %>%
-      barChartRace(
-        x = "Total Hybrids",
-        y = "Brand",
-        time = "Year",
-        title = "Popular Brands and their total hybrids over the Years",
-        frameDur = 100,
-        colorCategory = "Dark2",
-        panelcol = "white",
-        bgcol = "#DCDCDC",  # a light gray
-        xgridlinecol = "#EBEBEBFF",
-        timeLabelOpts = list(size = 16)
-      )
-    animate(anim) # New
-    # Return a list containing the filename
-    list(src = "outfile.gif", contentType = "image/gif")
-  },
-  deleteFile = TRUE
-  )
+  # output$bars = renderImage({
+  #   anim = myTibble %>%
+  #     barChartRace(
+  #       x = "Total Hybrids",
+  #       y = "Brand",
+  #       time = "Year",
+  #       title = "Popular Brands and their total hybrids over the Years",
+  #       frameDur = 100,
+  #       colorCategory = "Dark2",
+  #       panelcol = "white",
+  #       bgcol = "#DCDCDC",  # a light gray
+  #       xgridlinecol = "#EBEBEBFF",
+  #       timeLabelOpts = list(size = 16)
+  #     )
+  #   animate(anim) 
+  #   list(src = "outfile.gif", contentType = "image/gif")
+  # },
+  # deleteFile = TRUE
+  # )
 
   output$markdown <- renderUI({
     HTML(markdown::markdownToHTML(knit('statistical_analysis.Rmd', quiet = TRUE)))
