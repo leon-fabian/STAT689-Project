@@ -22,7 +22,7 @@ output: html_document
 
 ###### Lodging refers to the permanent displacement of aboveground portions of crops from their vertical stance due to stem buckling (stem lodging) or failure of the root–soil anchorage system (root lodging). Lodging is a concern for producers who fear taller hybrids may fall over and thus decrease yields. 
 
-<img src="figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="50%" />
+<img src="figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="50%" />
 
 ##### Cultural Practices
 
@@ -31,7 +31,7 @@ output: html_document
 
 
 
-<img src="figure/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="50%" /><img src="figure/unnamed-chunk-14-2.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="50%" />
+<img src="figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="50%" /><img src="figure/unnamed-chunk-3-2.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="50%" />
 
 
 

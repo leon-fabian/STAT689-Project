@@ -11,7 +11,7 @@ Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cere
 ### Motivation
 The idea for this visualization project was to use the [Texas A&M Variety Testing](http://varietytesting.tamu.edu/grainsorghum/) and [USDA NASS](https://quickstats.nass.usda.gov/) data repositories on [grain sorghum](https://www.sorghumcheckoff.com/sorghum-101/) production to visualize yield and agricultural production trends for the state of Texas. The first dataset is from Texas A&M Agrilife, which contains data from 1970 - 2021 Texas Sorghum Variety Trials. The second is the dataset from the USDA National Agricultural Statistics website that was collected to reflect this same time period. While agronomists attempt to look at the trends through their research, individual experimental attempts seldom span as long a time period. Visualizing these datasets is the best representation of historical trends for Texas production regions as could be compiled.  
 
-### Visualization Design/Implementation
+### Visualization Design & Implementation
 
 In our project, the Shiny framework is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
 
@@ -19,11 +19,16 @@ Our app consists of five menu items in the dashboard, which let the user choose 
 
 
 ### Methodology
-Clearly state why & how can your data visualization be used to solve the research questions
 
+The generalized additive model's smoothed line graph of historical yields is a useful tool to see the peaks and valleys of sorghum yields throughout the years. From this plot, we can then retrospectively focus on a certain time period and reflect on what was happening in the industry at that time that might've caused such an increase or decrease in yields. 
 
+A biological system like a sorghum plant or a field of sorghum contains many dependencies and in some sense is a zero-sum system. The correlation plots on the "Trait Relationships" tabs between metrics of hybrid performance indicate the tradeoffs within this crop system. Strong associations can be exploited once visualized with a major example being the association between taller plant height and higher grain yield. 
 
+The choropleth map is a strong visual for historic progress as it allows for the reader to witness where the highest yielding sorghum production zones were in the state throughout history. Additionally this visual allows us to see the clear decline in the number of Texas counties that grew sorghum beginning in the early 2000s. This loss of sorghum acreage is very clearly reflected with the abscence of more and more counties as the map's slider progresses. 
 
+The grain sorghum industry, like the rest of the agricultural industry, has seen consolidation in companies working to produce new hybrid seeds. The racing bar chart in the "Company Brands" tab allows a visual representation of which company brands were most profilic in submitting new hybrid products to these trials throughout history. These bars reflect private seed companies and also public institutions that developed hybrids like Texas A&M or USDA agencies. 
+
+The final tab of the data visualization dashboard addresses the environmental variables and cultural practices affecting grain yield. The expressed aim of this analysis is to visualize the contribution of a limited number of factors to the response variable: grain yield. A more expansive analysis with a model with more terms would only prove harder to visualize and become less meaningul for anyone who is not a subject-matter expert.
 
 
 ### Evaluation Plan
@@ -49,7 +54,28 @@ Delivering these types of trends into the hands of farmers and decision makers i
 The nature of these data is that they are annually updated with the latest year's production. This work will need to be updated annually to incorporate the most current information into these trends. 
 
 ### References
+Major References are as follows:<br>
+# https://rstudio.github.io/shinydashboard/appearance.html <br>
+# https://rstudio.github.io/shinydashboard/structure.html  <br>
+Major libraries used in implementing visualizations and R app:<br>
+library(shiny)<br>
+library(shinythemes)<br>
+library(ggplot2)<br>
+library(shinydashboard)<br>
+library(plotly)<br>
+library(dplyr)<br>
+library(readr)<br>
+library(RColorBrewer)<br>
+library(leaflet)<br>
+library(ddplot)<br>
+library(ggmap)<br>
+library(readxl)<br>
+library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot<br>
+library(geojsonR)<br>
+library(rjson)<br>
+library(knitr)<br>
 
+When issues in implementation of app/layout arose, [Stack overflow](https://stackoverflow.com/) and the [R studio community forum](https://community.rstudio.com/) were consulted.<br>
 
 
 
@@ -59,7 +85,8 @@ The nature of these data is that they are annually updated with the latest year'
 
 
 ### Team Member Contributions
-
+Ram Pangaluri:<br>
+Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report,as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
 
 
 

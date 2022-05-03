@@ -23,7 +23,8 @@ library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignette
 library(geojsonR)
 library(rjson)
 library(knitr)
-
+library(gganimate)
+library(r2d3)
 
 lm_eqn <- function(df){
   m <- lm(y ~ x, df);
@@ -155,6 +156,8 @@ ui <- dashboardPage(
       tabItem(tabName = "brands",
               h2("Accumulated numbers of Hybrids submitted over the years"),
               fluidRow(box(plotlyOutput("bars")))
+              
+              
       ),
       
       # LMM Statistical Analysis & Predictions
@@ -184,6 +187,7 @@ server = function(input, output) {
       geom_smooth() 
       
     ggplotly(p)
+    
   })
   
   # Scatter Plot
@@ -233,24 +237,13 @@ server = function(input, output) {
         xgridlinecol = "#EBEBEBFF",
         timeLabelOpts = list(size = 16)
       )
-    anim_save("outfile.gif", animate(anim)) # New
+    animate(anim) # New
     # Return a list containing the filename
     list(src = "outfile.gif", contentType = "image/gif")
   },
   deleteFile = TRUE
   )
 
-  # Effects & Predictions
-  # output$modeleffects = renderPlot({
-  #   
-  #   factor.model = lm(lbs.per.ac.Yield ~ Year + input$factor, txar)
-  #   
-  #   ggPredict(factor.model) + 
-  #     labs(x = "Year", y = "Yield (lbs/ac)") +
-  #     theme_minimal()
-  #   
-  #   
-  # })
   output$markdown <- renderUI({
     HTML(markdown::markdownToHTML(knit('statistical_analysis.Rmd', quiet = TRUE)))
   })
