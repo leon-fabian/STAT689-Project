@@ -13,7 +13,9 @@ The idea for this visualization project was to use the [Texas A&M Variety Testin
 
 ### Visualization Design/Implementation
 
+In our project, the Shiny framework is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
 
+Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LMM Analysis. 
 
 
 ### Methodology
@@ -26,6 +28,17 @@ Clearly state why & how can your data visualization be used to solve the researc
 
 ### Evaluation Plan
 
+For evaluation, we compare the initial proposal with the final product of the application produced. Each question from the proposal is addressed and checked to determine whether the final product satisfies our project goals. The evaluation for each visualization technique goes as follows:
+
+Line Graph 
+
+Scatter Plot 
+
+Choropleth Map 
+
+Racing Bar 
+
+LMM Analysis  
 
 
 ### Discussions & Future Work
