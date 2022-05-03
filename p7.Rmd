@@ -13,7 +13,9 @@ The idea for this visualization project was to use the [Texas A&M Variety Testin
 
 ### Visualization Design/Implementation
 
+In our project, the Shiny framework is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
 
+Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LMM Analysis. 
 
 
 ### Methodology
@@ -33,6 +35,17 @@ The final tab of the data visualization dashboard addresses the environmental va
 
 ### Evaluation Plan
 
+For evaluation, we compare the initial proposal with the final product of the application produced. Each question from the proposal is addressed and checked to determine whether the final product satisfies our project goals. The evaluation for each visualization technique goes as follows:
+
+Line Graph 
+
+Scatter Plot 
+
+Choropleth Map 
+
+Racing Bar 
+
+LMM Analysis  
 
 
 ### Discussions & Future Work
@@ -53,7 +66,8 @@ The nature of these data is that they are annually updated with the latest year'
 
 
 ### Team Member Contributions
-
+Ram Pangaluri:<br>
+Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report,as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
 
 
 
