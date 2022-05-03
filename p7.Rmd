@@ -64,7 +64,7 @@ Overall we were satisfied with the outcome of this attribute of the project. The
 Scatter Plot<br>
 Goal:<br> Make a drop down menu of variables that allows the user to choose variables and see scatterplot of the data in a window. Also wanted a pearson R for the relationship between the two variables chosen. 
 Evaluation:<br> 
-Our final product did have drop down menu which included all the variables. One menu for the x axis and and one for the y axis. So far we have not implemented a way to display the pearson R value for a given plot as we had wanted to.
+Our final product did have drop down menu which included all the variables. One menu for the x axis and and one for the y axis. So far we have not implemented a way to display the pearson R value for a given plot as we had wanted to, instead we opted for a line of best fit.
 
 Choropleth Map
 Goal:<br> Make a chloropleth map of average yields per texas county. Upon hovering we wanted users to see the county name and its average yield.
