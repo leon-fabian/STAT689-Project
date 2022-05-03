@@ -19,12 +19,13 @@ library(leaflet)
 library(ddplot)
 library(ggmap)
 library(readxl)
-library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
-library(geojsonR)
+# library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
+# library(gganimate)
+# library(r2d3)
+# library(geojsonR)
 library(rjson)
 library(knitr)
-library(gganimate)
-library(r2d3)
+
 
 lm_eqn <- function(df){
   m <- lm(y ~ x, df);
