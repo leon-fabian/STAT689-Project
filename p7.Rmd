@@ -40,13 +40,21 @@ Goal:<br> Make a line graph with range slider to see how sorghum yields(GY) chan
 Evaluation: <br>
 Overall we were satisfied with the outcome of this attribute of the project. The user interaction objective of this visualization was achieved. Furthermore we also made the line graph display further information on a hover action.
 
-Scatter Plot 
+Scatter Plot<br>
+Goal:<br> Make a drop down menu of variables that allows the user to choose variables and see scatterplot of the data in a window. Also wanted a pearson R for the relationship between the two variables chosen. 
+Evaluation:<br> Our final product did have drop down menu which included all the variables. One menu for the x axis and and one for the y axis. So far we have not implemented a way to display the pearson R value for a given plot as we had wanted to.
 
-Choropleth Map 
+Choropleth Map
+Goal:<br> Make a chloropleth map of average yields per texas county. Upon hovering we wanted users to see the county name and its average yield.
+Evaluation:<br> We were satisfied with our final map. Although it is a map, it also can serve as an animation, by pressing the play button users can see how average yields across Texas counties from 1970-2021. We also accomplished the hover information goal, and added distinct colors to distinguish different yield levels.
 
 Racing Bar 
+Goal:<br> Make a racing bar graph that visualizes the accumulation of hybrids from each brand over the years. 
+Evaluation:<br> While we did successfully implement this part, we had trouble imbedding the animation into our shiny app. We worked around this by embedding a video of our animation in action instead.
 
 LMM Analysis  
+Goal:<br> 
+Evaluation:<br> 
 
 
 ### Discussions & Future Work
@@ -68,7 +76,7 @@ The nature of these data is that they are annually updated with the latest year'
 
 ### Team Member Contributions
 Ram Pangaluri:<br>
-Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report,as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
+Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report namely reference and evaluation plan sections(except LMM part),as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
 
 Fabian Leon:<br>
 Design, planning, data collection, writing, and revising (P1-7). Brainstorming and development of project story points as the team member with the subject matter expertise for these data. Created the home page, historical yield improvements, and yield factors tabs in the shiny app. Revised all plots and integrated all code into the shiny app, with the exception of the racing bars animation, with the final dataset. For P7, contributed Introduction, Motivation, Methodology, and Discussion.
