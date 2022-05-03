@@ -15,18 +15,30 @@ The idea for this visualization project was to use the Texas A&M Variety Testing
 
 In our project, the Shiny framework *CITE* is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
 
-Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LM Analysis. 
+Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following Visualization techniques in our project: 
+
+Line Graph - Historical Yield Improvements 
+
+Here, we visualize how elite hybrids’ average sorghum yields have changed over time and what periods saw the most significant increases in yield from the TXAR data. ggplot2 library *CITE* was used to implement this visualization technique. 
+
+Scatterplot - Traits Relationship 
+
+An interactive scatterplot window that plots and displays Pearson's R for whichever two variables(yield, plant height, exsertion, days to flowering) the user selects from the drop-down menu is implemented through the ggplot2 library *CITE* using the TXAR dataset. 
 
 
-Line graph... gam *CITE* ggplot2 *CITE* 
+Choropleth Map - County-wise yield map
 
-Scatterplot... ggplot2
+We construct a Choropleth map using Plotly *CITE* to see the average yields per county from the USDA data. A year slider bar from 1970-2020 selects the desired year and loads the corresponding Choropleth map. 
 
-Choropleth Map... plotly *CITE* jSONR *CITE*
+Racing Bar Graph - Company Brands over the years
 
-Racing bar graph... ddplot *CITE*
+The dataset is representative of 180 company brands that have produced the ~4000 hybrids in the trials. This animated gif presents which brands were most prolific in releasing these hybrids over the years by allowing us to see the accumulation of hybrids from each brand from 1970 to 2020. This graph is implemented using ddplot library. 
 
-LM Analysis... ggplot2
+
+LMM Analysis - Statistical Analysis
+
+We implemented a linear mixed model analysis using ggplot2 *CITE* for output yield, where we attempt to understand how different factors affect the overall yield. The model is plotted as a scatterplot to visualize the effects and interactions. These results will also allow for predictions of future yield trials.
+
 
 ### Methodology
 
@@ -51,7 +63,8 @@ Overall we were satisfied with the outcome of this attribute of the project. The
 
 Scatter Plot<br>
 Goal:<br> Make a drop down menu of variables that allows the user to choose variables and see scatterplot of the data in a window. Also wanted a pearson R for the relationship between the two variables chosen. 
-Evaluation:<br> Our final product did have drop down menu which included all the variables. One menu for the x axis and and one for the y axis. So far we have not implemented a way to display the pearson R value for a given plot as we had wanted to.
+Evaluation:<br> 
+Our final product did have drop down menu which included all the variables. One menu for the x axis and and one for the y axis. So far we have not implemented a way to display the pearson R value for a given plot as we had wanted to.
 
 Choropleth Map
 Goal:<br> Make a chloropleth map of average yields per texas county. Upon hovering we wanted users to see the county name and its average yield.
@@ -59,7 +72,8 @@ Evaluation:<br> We were satisfied with our final map. Although it is a map, it a
 
 Racing Bar 
 Goal:<br> Make a racing bar graph that visualizes the accumulation of hybrids from each brand over the years. 
-Evaluation:<br> While we did successfully implement this part, we had trouble imbedding the animation into our shiny app. We worked around this by embedding a video of our animation in action instead.
+Evaluation:<br> 
+While we did successfully implement this part, we had trouble imbedding the animation into our shiny app. We worked around this by embedding a video of our animation in action instead.
 
 Linear Model Analysis  
 Goal:    
@@ -80,6 +94,10 @@ Contributed to design,planning, and writing in P1-5. Helped brainstorm and final
 
 Fabian Leon:<br>
 Design, planning, data collection, writing, and revising (P1-7). Brainstorming and development of project story points as the team member with the subject matter expertise for these data. Created the home page, historical yield improvements, and yield factors tabs in the shiny app. Revised all plots and integrated all code into the shiny app, with the exception of the racing bars animation, with the final dataset. For P7, contributed Introduction, Motivation, Methodology, and Discussion.
+
+Ashok Shanker:<br>
+Contributed to Design, planning, writing and revising (P1-P7). Helped with Brainstorming and Story points in alignment with project goals. Helped create intermediate datasets to implement visualizations used. Created and integrated the Choropleth and Racebar chart tabs into Shiny app. Contributed to the R app files on team github. For P7, contributed to the Visualization Design and Implementation and Evaluation Plan. 
+
 
 ### References
 
