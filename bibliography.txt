@@ -1,0 +1,20 @@
+﻿@inbook{RN261,
+   author = {Balakrishna, D. and Vinodh, R. and Madhu, P. and Avinash, S. and Rajappa, P. V. and Bhat, B. Venkatesh},
+   title = {Chapter 7 - Tissue Culture and Genetic Transformation in Sorghum bicolor},
+   booktitle = {Breeding Sorghum for Diverse End Uses},
+   editor = {Aruna, C. and Visarada, K. B. R. S. and Bhat, B. Venkatesh and Tonapi, Vilas A.},
+   publisher = {Woodhead Publishing},
+   pages = {115-130},
+   ISBN = {978-0-08-101879-8},
+   DOI = {https://doi.org/10.1016/B978-0-08-101879-8.00007-3},
+   url = {https://www.sciencedirect.com/science/article/pii/B9780081018798000073},
+   year = {2019},
+   type = {Book Section}
+}
+
+@misc{RN180,
+   url = {https://quickstats.nass.usda.gov/},
+   year = {2021},
+   type = {Online Database}
+}
+

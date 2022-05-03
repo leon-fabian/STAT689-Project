@@ -157,7 +157,7 @@ ui <- dashboardPage(
               # fluidRow(box(plotlyOutput("bars")))
       ),
       
-      # LMM Statistical Analysis & Predictions
+      # LM Statistical Analysis & Predictions
       tabItem(tabName = "stats",
               h2("Environmental variables and cultural practices affecting grain yields"),
               # fluidRow(

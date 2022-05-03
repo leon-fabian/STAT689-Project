@@ -2,11 +2,11 @@
 title: <center> P7 - Final Report </center>
 author: <center> Ram Pangaluri, Ashok Shanker, Fabian Leon </center>
 output: html_document
+bibliography: bibliography.bibtex
 ---
 
 ### Introduction 
-Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cereal crop, in terms of both production and area planted. It is an increasingly relevant grain crop due to its resilience to drier and hotter climates. In the United States, sorghum is typically grown in dryland areas in Kansas and Texas with Texas accounting for ~1.8 million of the United States' ~5.8 million acres of sorghum production. The circumstances of where it is grown mean that sorghum usually does not meet its optimal yield potential. To ensure that the best decisions are being made to achieve maximal sorghum yields despite poor growing conditions we attempt to visualize trends in the environmental, genetic, and agronomic factors affecting yield. 
-
+Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cereal crop, in terms of both production and area planted [@RN261] . It is an increasingly relevant grain crop due to its resilience to drier and hotter climates. In the United States, sorghum is typically grown in dryland areas in Kansas and Texas with Texas accounting for ~1.8 million of the United States' ~5.8 million acres of sorghum production [@RN180]. The circumstances of where it is grown mean that sorghum usually does not meet its optimal yield potential. To ensure that the best decisions are being made to achieve maximal sorghum yields despite poor growing conditions we attempt to visualize trends in the environmental, genetic, and agronomic factors affecting yield. 
 
 ### Motivation
 The idea for this visualization project was to use the [Texas A&M Variety Testing](http://varietytesting.tamu.edu/grainsorghum/) and [USDA NASS](https://quickstats.nass.usda.gov/) data repositories on [grain sorghum](https://www.sorghumcheckoff.com/sorghum-101/) production to visualize yield and agricultural production trends for the state of Texas. The first dataset is from Texas A&M Agrilife, which contains data from 1970 - 2021 Texas Sorghum Variety Trials. The second is the dataset from the USDA National Agricultural Statistics website that was collected to reflect this same time period. While agronomists attempt to look at the trends through their research, individual experimental attempts seldom span as long a time period. Visualizing these datasets is the best representation of historical trends for Texas production regions as could be compiled.  
@@ -16,7 +16,6 @@ The idea for this visualization project was to use the [Texas A&M Variety Testin
 In our project, the Shiny framework is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
 
 Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LMM Analysis. 
-
 
 ### Methodology
 
@@ -28,8 +27,7 @@ The choropleth map is a strong visual for historic progress as it allows for the
 
 The grain sorghum industry, like the rest of the agricultural industry, has seen consolidation in companies working to produce new hybrid seeds. The racing bar chart in the "Company Brands" tab allows a visual representation of which company brands were most profilic in submitting new hybrid products to these trials throughout history. These bars reflect private seed companies and also public institutions that developed hybrids like Texas A&M or USDA agencies. 
 
-The final tab of the data visualization dashboard addresses the environmental variables and cultural practices affecting grain yield. The expressed aim of this analysis is to visualize the contribution of a limited number of factors to the response variable: grain yield. A more expansive analysis with a model with more terms would only prove harder to visualize and become less meaningul for anyone who is not a subject-matter expert.
-
+The final tab of the data visualization dashboard addresses the environmental variables and cultural practices affecting grain yield. Individual effects are plotted as follows: Yield ~ Year + Effect, with the effect being visualized in the plot with multiple lines.
 
 ### Evaluation Plan
 
@@ -52,10 +50,11 @@ Racing Bar
 Goal:<br> Make a racing bar graph that visualizes the accumulation of hybrids from each brand over the years. 
 Evaluation:<br> While we did successfully implement this part, we had trouble imbedding the animation into our shiny app. We worked around this by embedding a video of our animation in action instead.
 
-LMM Analysis  
-Goal:<br> 
-Evaluation:<br> 
-
+Linear Model Analysis  
+Goal:    
+The expressed aim of this analysis is to visualize the contribution of certain factors to the response variable: grain yield.  
+Evaluation:  
+The individual effect plots are easy to understand because they are reflective of only one variable at a time. A more expansive analysis with a model with more terms would only prove harder to visualize and become less meaningul for anyone who is not a subject-matter expert. The limitation of this approach is that further factors may not have linear effects and would require a more flexible model. 
 
 ### Discussions & Future Work
 The final data visualization dashboard encompasses a large breadth of agronomic and historical insights. However, beyond the agronomic practices, further work should be conducted to narrow in on the environmental and genetic components of these trials. This area of study is exceedingly complicated by cross-over interactions between the agronomic practices, environmental conditions, and the plant's genetics. Typically, these interactions are very specific to a production practice or geographic area. These type of research questions are best addressed with targeted experimentation and not well suited for investigation via a large retrospective like we present. 
@@ -64,16 +63,6 @@ Delivering these types of trends into the hands of farmers and decision makers i
 
 The nature of these data is that they are annually updated with the latest year's production. This work will need to be updated annually to incorporate the most current information into these trends. 
 
-### References
-
-
-
-
-
-
-
-
-
 ### Team Member Contributions
 Ram Pangaluri:<br>
 Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report namely reference and evaluation plan sections(except LMM part),as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
@@ -81,7 +70,7 @@ Contributed to design,planning, and writing in P1-5. Helped brainstorm and final
 Fabian Leon:<br>
 Design, planning, data collection, writing, and revising (P1-7). Brainstorming and development of project story points as the team member with the subject matter expertise for these data. Created the home page, historical yield improvements, and yield factors tabs in the shiny app. Revised all plots and integrated all code into the shiny app, with the exception of the racing bars animation, with the final dataset. For P7, contributed Introduction, Motivation, Methodology, and Discussion.
 
-
+### References
 
 
 
