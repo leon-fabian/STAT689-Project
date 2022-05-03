@@ -59,7 +59,8 @@ The nature of these data is that they are annually updated with the latest year'
 
 
 ### Team Member Contributions
-
+Ram Pangaluri:<br>
+Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report,as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
 
 
 
