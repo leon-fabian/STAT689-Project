@@ -6,16 +6,27 @@ bibliography: bibliography.bibtex
 ---
 
 ### Introduction 
-Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cereal crop, in terms of both production and area planted [@RN261] . It is an increasingly relevant grain crop due to its resilience to drier and hotter climates. In the United States, sorghum is typically grown in dryland areas in Kansas and Texas with Texas accounting for ~1.8 million of the United States' ~5.8 million acres of sorghum production [@RN180]. The circumstances of where it is grown mean that sorghum usually does not meet its optimal yield potential. To ensure that the best decisions are being made to achieve maximal sorghum yields despite poor growing conditions we attempt to visualize trends in the environmental, genetic, and agronomic factors affecting yield. 
+Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cereal crop, in terms of both production and area planted *CITE*[@RN261]. It is an increasingly relevant grain crop due to its resilience to drier and hotter climates. In the United States, sorghum is typically grown in dryland areas in Kansas and Texas with Texas accounting for ~1.8 million of the United States' ~5.8 million acres of sorghum production [@RN180] *CITE*. The circumstances of where it is grown mean that sorghum usually does not meet its optimal yield potential. To ensure that the best decisions are being made to achieve maximal sorghum yields despite poor growing conditions we attempt to visualize trends in the environmental, genetic, and agronomic factors affecting yield. 
 
 ### Motivation
-The idea for this visualization project was to use the [Texas A&M Variety Testing](http://varietytesting.tamu.edu/grainsorghum/) and [USDA NASS](https://quickstats.nass.usda.gov/) data repositories on [grain sorghum](https://www.sorghumcheckoff.com/sorghum-101/) production to visualize yield and agricultural production trends for the state of Texas. The first dataset is from Texas A&M Agrilife, which contains data from 1970 - 2021 Texas Sorghum Variety Trials. The second is the dataset from the USDA National Agricultural Statistics website that was collected to reflect this same time period. While agronomists attempt to look at the trends through their research, individual experimental attempts seldom span as long a time period. Visualizing these datasets is the best representation of historical trends for Texas production regions as could be compiled.  
+The idea for this visualization project was to use the Texas A&M Variety Testing *CITE* and USDA NASS data repositories *CITE* on grain sorghum production *CITE* to visualize yield and agricultural production trends for the state of Texas. The first dataset is from Texas A&M Agrilife, which contains data from 1970 - 2021 Texas Sorghum Variety Trials. The second is the dataset from the USDA National Agricultural Statistics website that was collected to reflect this same time period. While agronomists attempt to look at the trends through their research, individual experimental attempts seldom span as long a time period. Visualizing these datasets is the best representation of historical trends for Texas production regions as could be compiled.  
 
 ### Visualization Design & Implementation
 
-In our project, the Shiny framework is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
+In our project, the Shiny framework *CITE* is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
 
-Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LMM Analysis. 
+Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LM Analysis. 
+
+
+Line graph... gam *CITE* ggplot2 *CITE* 
+
+Scatterplot... ggplot2
+
+Choropleth Map... plotly *CITE* jSONR *CITE*
+
+Racing bar graph... ddplot *CITE*
+
+LM Analysis... ggplot2
 
 ### Methodology
 
@@ -25,7 +36,7 @@ A biological system like a sorghum plant or a field of sorghum contains many dep
 
 The choropleth map is a strong visual for historic progress as it allows for the reader to witness where the highest yielding sorghum production zones were in the state throughout history. Additionally this visual allows us to see the clear decline in the number of Texas counties that grew sorghum beginning in the early 2000s. This loss of sorghum acreage is very clearly reflected with the abscence of more and more counties as the map's slider progresses. 
 
-The grain sorghum industry, like the rest of the agricultural industry, has seen consolidation in companies working to produce new hybrid seeds. The racing bar chart in the "Company Brands" tab allows a visual representation of which company brands were most profilic in submitting new hybrid products to these trials throughout history. These bars reflect private seed companies and also public institutions that developed hybrids like Texas A&M or USDA agencies. 
+The grain sorghum industry, like the rest of the agricultural industry, has seen consolidation in companies working to produce new hybrid seeds *CITE*. The racing bar chart in the "Company Brands" tab allows a visual representation of which company brands were most profilic in submitting new hybrid products to these trials throughout history. These bars reflect private seed companies and also public institutions that developed hybrids like Texas A&M or USDA agencies. 
 
 The final tab of the data visualization dashboard addresses the environmental variables and cultural practices affecting grain yield. Individual effects are plotted as follows: Yield ~ Year + Effect, with the effect being visualized in the plot with multiple lines.
 

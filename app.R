@@ -22,7 +22,7 @@ library(readxl)
 # library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
 # library(gganimate)
 # library(r2d3)
-# library(geojsonR)
+library(geojsonR)
 library(rjson)
 library(knitr)
 
