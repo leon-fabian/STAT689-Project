@@ -81,6 +81,9 @@ The expressed aim of this analysis is to visualize the contribution of certain f
 Evaluation:  
 The individual effect plots are easy to understand because they are reflective of only one variable at a time. A more expansive analysis with a model with more terms would only prove harder to visualize and become less meaningul for anyone who is not a subject-matter expert. The limitation of this approach is that further factors may not have linear effects and would require a more flexible model. 
 
+### Usage
+The app can be found here https://fleon.shinyapps.io/STAT689-Project/. Best practice is to open the app in browser. Some parts of the app like the map and bar chart race are slower to load, so allow some time for them to load in. If they still don't appear html files of these visualizations can be found here https://drive.google.com/file/d/1wgHxxF2yTMw8LPsy24gXHz5EbZ_qAlLP/view?usp=sharing. Downloading and running these html files will allow the ability to see the visualizations without much buffering/loading.
+
 ### Discussions & Future Work
 The final data visualization dashboard encompasses a large breadth of agronomic and historical insights. However, beyond the agronomic practices, further work should be conducted to narrow in on the environmental and genetic components of these trials. This area of study is exceedingly complicated by cross-over interactions between the agronomic practices, environmental conditions, and the plant's genetics. Typically, these interactions are very specific to a production practice or geographic area. These type of research questions are best addressed with targeted experimentation and not well suited for investigation via a large retrospective like we present. 
 
