@@ -54,28 +54,7 @@ Delivering these types of trends into the hands of farmers and decision makers i
 The nature of these data is that they are annually updated with the latest year's production. This work will need to be updated annually to incorporate the most current information into these trends. 
 
 ### References
-Major References are as follows:<br>
-# https://rstudio.github.io/shinydashboard/appearance.html <br>
-# https://rstudio.github.io/shinydashboard/structure.html  <br>
-Major libraries used in implementing visualizations and R app:<br>
-library(shiny)<br>
-library(shinythemes)<br>
-library(ggplot2)<br>
-library(shinydashboard)<br>
-library(plotly)<br>
-library(dplyr)<br>
-library(readr)<br>
-library(RColorBrewer)<br>
-library(leaflet)<br>
-library(ddplot)<br>
-library(ggmap)<br>
-library(readxl)<br>
-library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot<br>
-library(geojsonR)<br>
-library(rjson)<br>
-library(knitr)<br>
 
-When issues in implementation of app/layout arose, [Stack overflow](https://stackoverflow.com/) and the [R studio community forum](https://community.rstudio.com/) were consulted.<br>
 
 
 
@@ -87,6 +66,11 @@ When issues in implementation of app/layout arose, [Stack overflow](https://stac
 ### Team Member Contributions
 Ram Pangaluri:<br>
 Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report,as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
+
+Fabian Leon:<br>
+Design, planning, data collection, writing, and revising (P1-7). Brainstorming and development of project story points as the team member with the subject matter expertise for these data. Created the home page, historical yield improvements, and yield factors tabs in the shiny app. Revised all plots and integrated all code into the shiny app, with the exception of the racing bars animation, with the final dataset. For P7, contributed Introduction, Motivation, Methodology, and Discussion.
+
+
 
 
 
