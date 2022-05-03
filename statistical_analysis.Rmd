@@ -5,13 +5,112 @@ date: "May 2, 2022"
 output: html_document
 ---
 
-# Introduction
+```{r message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE}
+# stat analysis with predictions code
 
-For grain sorghum to achieve maximal yields many factors must contribute and interact favorably. 
+library(lme4)
+library(ggiraph)
+library(ggiraphExtra)
+library(ggplot2)
+# Read Dataset
+data = read.csv("data/data.csv", na.strings = c("",".","NA"))
+factors = c("Dataset", "Location", "County", "AgriLife.Region", "Region", "Irrigation", 
+            "Hybrid", "Brand", "Maturity", "Previous.Crop")
+numerics = c("DA", "PH", "EX", "MST", "bu.per.acre.Yield", "lbs.per.ac.Yield", "GY", "Lodging", "RowWidth", 
+             "Location.Average.Yield", "plot.length", "rainfall", "Irrigation.Amount", 
+             "Total.Moisture", "Population", "Days.from.Plant.to.Harvest")
+
+integers = c("Number.of.Rows", "Year")
+data[,factors] = lapply(data[,factors], as.factor)
+data[,numerics] = lapply(data[,numerics], as.numeric)
+data[,integers] = lapply(data[,integers], as.integer)
+
+usda = data[which(data$Dataset == "USDA"),]
+txar = data[which(data$Dataset == "TXAR"),]
+
+traits = c("Year", "DA", "PH", "EX", "GY")
+
+```
+
+
+######  For grain sorghum to achieve maximal yields many factors must contribute and interact favorably. To better understand the effects of environmental factors, cultural practices, and genetics, we can model the yields of Texas AgriLife trials against these factors. 
+
+
+##### Water Availability
+
+###### The preeminent environmental effect on sorghum production is typically the amount of available water throughout the the crop's growing season. Sorghum is a relatively drought tolerant crop that is usually placed in areas with chances of moisture. Rainfall (cm) and irrigation (cm) both contribute to total available moisture in the field. 
+
+```{r, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE, figures-side, fig.show="hold", out.width="50%"}
+
+par(mfrow=c(1,2))
+
+##### Irrigation #####
+Irr.model = lm(lbs.per.ac.Yield ~ Year + Irrigation, txar)
+ggPredict(Irr.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
+
+##### Total.Moisture #####
+
+Total.Moisture.model = lm(lbs.per.ac.Yield ~ Year + Total.Moisture, txar)
+
+ggPredict(Total.Moisture.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
+
+```
+
+
+##### Lodging   
+
+###### Lodging refers to the permanent displacement of aboveground portions of crops from their vertical stance due to stem buckling (stem lodging) or failure of the root–soil anchorage system (root lodging). Lodging is a concern for producers who fear taller hybrids may fall over and thus decrease yields. 
+
+```{r, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE, fig.show="hold", out.width="50%"}
+
+##### Lodging #####
+
+Lodging.model = lm(lbs.per.ac.Yield ~ PH + Lodging, txar)
+
+ggPredict(Lodging.model) + 
+  labs(x = "Plant Height", y = "Yield (lbs/ac)") +
+  theme_minimal() +
+  scale_color_continuous()
+
+```
+
+##### Cultural Practices
+
+###### Farming practices evolve over time to achieve maximal yields with changing genetic and environmental factors. Row spacing (inches) along with Population (plants/acre) determine the crop arrangement in a field, altering how fast the crop canopy closes (leaves from adjoining rows begin overlapping) and the ways in which weeds grow between crop rows.
 
 
 
-To better understand the effects of environmental factors, cultural practices, and genetics, we can model the yields of Texas AgriLife trials against 
+
+```{r, message=FALSE, warning=FALSE, paged.print=FALSE, echo=FALSE, fig.show="hold", out.width="50%"}
+
+par(mfrow=c(1,2))
+
+##### RowWidth #####
+
+RowWidth.model = lm(lbs.per.ac.Yield ~ Year + RowWidth, txar)
+
+ggPredict(RowWidth.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal() +
+  scale_color_continuous()
+
+
+##### RowWidth #####
+
+Population.model = lm(lbs.per.ac.Yield ~ Year + Population, txar)
+
+ggPredict(Population.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
+
+```
+
+
+
 
 
 

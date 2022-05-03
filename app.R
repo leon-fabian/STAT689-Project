@@ -22,6 +22,7 @@ library(readxl)
 library(ddplot) # remotes::install_github("feddelegrand7/ddplot", build_vignettes = TRUE) #used to install ddplot
 library(geojsonR)
 library(rjson)
+library(knitr)
 
 
 lm_eqn <- function(df){
@@ -56,7 +57,7 @@ counties_df = read.csv("data/TX-FIPS.csv", fileEncoding = 'UTF-8-BOM')
 usda_df = usda %>% 
   inner_join(counties_df, by.x = County, by.y = County) %>%
   select(Year, County, FIPS, bu.per.acre.Yield) %>% 
-  mutate(hover = paste0(County, "\n", bu.per.acre.Yield, " bu/ac"))
+  mutate(hover = paste0(County, " ", bu.per.acre.Yield, " bu/ac"))
 usda_df[, "FIPS_ST_CNTY_CD"] = as.character(usda_df[,"FIPS"])
 fontStyle = list(family = "DM Sans", size = 15, color = "black")
 label = list(bgcolor = "#EEEEEE", bordercolor = "transparent", font = fontStyle)
@@ -75,6 +76,12 @@ myTibble = as_tibble(txar %>%
 # myTibble = as_tibble(myTibble %>% 
 #                        group_by(Brand) %>%
 #                        mutate(cs = cumsum('Total Hybrids')))
+
+
+##### For Effects Modelling and Predictions #####
+factors = c("Maturity", "RowWidth", "Irrigation", "rainfall", 
+            "Irrigation.Amount", "Population", "Days.from.Plant.to.Harvest")
+
 
 
 ##### UI #####
@@ -99,7 +106,7 @@ ui <- dashboardPage(
       menuItem("Company Brands", 
                tabName = "brands", 
                icon = icon("object-align-left", lib="glyphicon")),
-      menuItem("Statistical Analysis", 
+      menuItem("Yield Factors", 
                tabName = "stats", 
                icon = icon("stats", lib="glyphicon"))
     )
@@ -152,12 +159,19 @@ ui <- dashboardPage(
       
       # LMM Statistical Analysis & Predictions
       tabItem(tabName = "stats",
-              h2("Linear mixed model for factors influencing grain yields"),
-              includeMarkdown("p6.Rmd")
+              h2("Environmental variables and cultural practices affecting grain yields"),
+              # fluidRow(
+              #   box(selectInput("factor", label = h2("Select a factor"), 
+              #                   choices = factors)),
+              #   box(plotOutput("modeleffects", height = 300)))
+              # includeMarkdown("statistical_analysis.Rmd"),
+              fluidPage(
+                uiOutput('markdown')
+              )
       )
     )
   )
-) 
+)
 
 
 ####### Server #########
@@ -226,8 +240,20 @@ server = function(input, output) {
   deleteFile = TRUE
   )
 
-  # LMM Statistical Analysis & Predictions
-  
+  # Effects & Predictions
+  # output$modeleffects = renderPlot({
+  #   
+  #   factor.model = lm(lbs.per.ac.Yield ~ Year + input$factor, txar)
+  #   
+  #   ggPredict(factor.model) + 
+  #     labs(x = "Year", y = "Yield (lbs/ac)") +
+  #     theme_minimal()
+  #   
+  #   
+  # })
+  output$markdown <- renderUI({
+    HTML(markdown::markdownToHTML(knit('statistical_analysis.Rmd', quiet = TRUE)))
+  })
   
 }
 

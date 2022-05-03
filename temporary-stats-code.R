@@ -50,13 +50,39 @@ ggPredict(ldg.model) +
 
 colnames(txar)
 
-##### Lodging #####
+##### RowWidth #####
 
-ldg.model = lm(lbs.per.ac.Yield ~ Year + Lodging, txar)
+RowWidth.model = lm(lbs.per.ac.Yield ~ Year + RowWidth, txar)
 
-ggPredict(ldg.model) + 
+ggPredict(RowWidth.model) + 
   labs(x = "Year", y = "Yield (lbs/ac)") +
   theme_minimal()
+
+
+##### RowWidth #####
+
+Population.model = lm(lbs.per.ac.Yield ~ Year + Population, txar)
+
+ggPredict(Population.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
+
+
+
+
+factors = c("Maturity", "RowWidth", "Irrigation", "rainfall", 
+            "Irrigation.Amount", "Population", "Previous.Crop", "Days.from.Plant.to.Harvest")
+
+Population.model = lm(lbs.per.ac.Yield ~ Year + Days.from.Plant.to.Harvest, txar)
+
+ggPredict(Population.model) + 
+  labs(x = "Year", y = "Yield (lbs/ac)") +
+  theme_minimal()
+
+
+
+
+
 
 
 
