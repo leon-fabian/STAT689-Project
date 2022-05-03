@@ -146,15 +146,20 @@ ui <- dashboardPage(
       
       # Choropleth map
       tabItem(tabName = "Map",
-              #h2("Chloropleth map of average yield per county")
-              fluidRow(box(plotlyOutput("map"))),
-              includeMarkdown("TXRegions.Rmd")
+              # includeHTML("images/finmap.html")
+              h2("Chloropleth map of average yield per county"),
+              fluidRow(htmlOutput('map'), height = '1000px', width = '600px')
+              # fluidRow(box(plotlyOutput("map"))),
+              # ## fluidRow(includeHTML("images/finmap.html"))
+              # includeMarkdown("TXRegions.Rmd")
       ),
       
       # Racing Bars
       tabItem(tabName = "brands",
-              h2("Accumulated numbers of Hybrids submitted over the years")
+              h2("Accumulated numbers of Hybrids submitted over the years"),
+              # fluidRow(includeHTML("barchartrace.html"))
               # fluidRow(box(plotlyOutput("bars")))
+              fluidRow(box(htmlOutput("bars"), height = '700px', width = '600px'))
       ),
       
       # LM Statistical Analysis & Predictions
@@ -177,6 +182,19 @@ ui <- dashboardPage(
 ####### Server #########
 server = function(input, output) {
   
+  getPage<-function() {
+    return(includeHTML("finmap.html"))
+  }
+  
+  getBarChart<-function() {
+    return(includeHTML("barchartrace.html"))
+  }
+  # Choropleth map
+  output$map = renderUI({getPage()})
+  
+  # Racing bars
+  output$bars = renderUI({getBarChart()})
+  
   # Line Graph
   output$graph1 = renderPlotly({
     p = ggplot(txar, aes(x = Year, y = lbs.per.ac.Yield)) + 
@@ -195,29 +213,29 @@ server = function(input, output) {
 
   })
   
-  # Choropleth map
-  output$map = renderPlotly({
-    plot_ly() %>% 
-      add_trace(type = "choropleth",
-                geojson = file_js,
-                locations = usda_df$FIPS,
-                frame = usda_df$Year,
-                z = usda_df$bu.per.acre.Yield,
-                colorscale = "Jet",
-                zmin = 0,
-                zmax = max(usda_df$bu.per.acre.Yield),
-                marker = list(line = list(width = 0)),
-                text = usda_df$hover) %>% 
-      colorbar(title = "Yield (bu/acre)") %>% 
-      layout(title = "USDA: Average Yield (bu/ac)", 
-             geo = list(#scope = 'usa',
-                        lonaxis = list(range = c(25, 38)),
-                        lataxis = list(range = c(90, 105)),
-                        projection = list(type = 'albers usa'),
-                        showlakes = TRUE,
-                        lakecolor = toRGB('white')))
-  })    
-    
+  # # Choropleth map
+  # output$map = renderPlotly({
+  #   plot_ly() %>% 
+  #     add_trace(type = "choropleth",
+  #               geojson = file_js,
+  #               locations = usda_df$FIPS,
+  #               frame = usda_df$Year,
+  #               z = usda_df$bu.per.acre.Yield,
+  #               colorscale = "Jet",
+  #               zmin = 0,
+  #               zmax = max(usda_df$bu.per.acre.Yield),
+  #               marker = list(line = list(width = 0)),
+  #               text = usda_df$hover) %>% 
+  #     colorbar(title = "Yield (bu/acre)") %>% 
+  #     layout(title = "USDA: Average Yield (bu/ac)", 
+  #            geo = list(#scope = 'usa',
+  #                       lonaxis = list(range = c(25, 38)),
+  #                       lataxis = list(range = c(90, 105)),
+  #                       projection = list(type = 'albers usa'),
+  #                       showlakes = TRUE,
+  #                       lakecolor = toRGB('white')))
+  # })    
+  #   
 
   # Racing Bars
   # output$bars = renderImage({

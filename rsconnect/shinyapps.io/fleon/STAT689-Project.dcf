@@ -1,0 +1,14 @@
+name: STAT689-Project
+title: STAT689-Project
+username:
+account: fleon
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6226184
+bundleId: 5866461
+url: https://fleon.shinyapps.io/STAT689-Project/
+when: 1651616144.52176
+lastSyncTime: 1651616144.52176
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: maps.R|p1.pdf|p1.Rmd|p2.pdf|p2.Rmd|p3.pdf|p3.Rmd|p4.html|p4.pdf|p4.Rmd|p5.html|p5.pdf|p5.Rmd|p6.html|p6.pdf|p6.Rmd|p7.html|p7.Rmd

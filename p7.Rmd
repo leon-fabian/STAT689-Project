@@ -5,8 +5,13 @@ output: html_document
 bibliography: bibliography.bibtex
 ---
 
+<center>
+https://fleon.shinyapps.io/STAT689-Project/  
+https://github.com/leon-fabian/STAT689-Project
+</center>
+
 ### Introduction 
-Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cereal crop, in terms of both production and area planted *CITE*[@RN261]. It is an increasingly relevant grain crop due to its resilience to drier and hotter climates. In the United States, sorghum is typically grown in dryland areas in Kansas and Texas with Texas accounting for ~1.8 million of the United States' ~5.8 million acres of sorghum production [@RN180] *CITE*. The circumstances of where it is grown mean that sorghum usually does not meet its optimal yield potential. To ensure that the best decisions are being made to achieve maximal sorghum yields despite poor growing conditions we attempt to visualize trends in the environmental, genetic, and agronomic factors affecting yield. 
+Sorghum [Sorghum *bicolor* (L. Moench)] is the world's fifth most important cereal crop, in terms of both production and area planted [@RN261]. It is an increasingly relevant grain crop due to its resilience to drier and hotter climates. In the United States, sorghum is typically grown in dryland areas in Kansas and Texas with Texas accounting for ~1.8 million of the United States' ~5.8 million acres of sorghum production [@RN180]. The circumstances of where it is grown mean that sorghum usually does not meet its optimal yield potential. To ensure that the best decisions are being made to achieve maximal sorghum yields despite poor growing conditions we attempt to visualize trends in the environmental, genetic, and agronomic factors affecting yield. 
 
 ### Motivation
 The idea for this visualization project was to use the Texas A&M Variety Testing *CITE* and USDA NASS data repositories *CITE* on grain sorghum production *CITE* to visualize yield and agricultural production trends for the state of Texas. The first dataset is from Texas A&M Agrilife, which contains data from 1970 - 2021 Texas Sorghum Variety Trials. The second is the dataset from the USDA National Agricultural Statistics website that was collected to reflect this same time period. While agronomists attempt to look at the trends through their research, individual experimental attempts seldom span as long a time period. Visualizing these datasets is the best representation of historical trends for Texas production regions as could be compiled.  
@@ -15,18 +20,30 @@ The idea for this visualization project was to use the Texas A&M Variety Testing
 
 In our project, the Shiny framework *CITE* is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal. 
 
-Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LM Analysis. 
+Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following Visualization techniques in our project: 
+
+Line Graph - Historical Yield Improvements 
+
+Here, we visualize how elite hybrids’ average sorghum yields have changed over time and what periods saw the most significant increases in yield from the TXAR data. ggplot2 library *CITE* was used to implement this visualization technique. 
+
+Scatterplot - Traits Relationship 
+
+An interactive scatterplot window that plots and displays Pearson's R for whichever two variables(yield, plant height, exsertion, days to flowering) the user selects from the drop-down menu is implemented through the ggplot2 library *CITE* using the TXAR dataset. 
 
 
-Line graph... gam *CITE* ggplot2 *CITE* 
+Choropleth Map - County-wise yield map
 
-Scatterplot... ggplot2
+We construct a Choropleth map using Plotly *CITE* to see the average yields per county from the USDA data. A year slider bar from 1970-2020 selects the desired year and loads the corresponding Choropleth map. 
 
-Choropleth Map... plotly *CITE* jSONR *CITE*
+Racing Bar Graph - Company Brands over the years
 
-Racing bar graph... ddplot *CITE*
+The dataset is representative of 180 company brands that have produced the ~4000 hybrids in the trials. This animated gif presents which brands were most prolific in releasing these hybrids over the years by allowing us to see the accumulation of hybrids from each brand from 1970 to 2020. This graph is implemented using ddplot library. 
 
-LM Analysis... ggplot2
+
+LMM Analysis - Statistical Analysis
+
+We implemented a linear mixed model analysis using ggplot2 *CITE* for output yield, where we attempt to understand how different factors affect the overall yield. The model is plotted as a scatterplot to visualize the effects and interactions. These results will also allow for predictions of future yield trials.
+
 
 ### Methodology
 
@@ -51,7 +68,8 @@ Overall we were satisfied with the outcome of this attribute of the project. The
 
 Scatter Plot<br>
 Goal:<br> Make a drop down menu of variables that allows the user to choose variables and see scatterplot of the data in a window. Also wanted a pearson R for the relationship between the two variables chosen. 
-Evaluation:<br> Our final product did have drop down menu which included all the variables. One menu for the x axis and and one for the y axis. So far we have not implemented a way to display the pearson R value for a given plot as we had wanted to.
+Evaluation:<br> 
+Our final product did have drop down menu which included all the variables. One menu for the x axis and and one for the y axis. So far we have not implemented a way to display the pearson R value for a given plot as we had wanted to, instead we opted for a line of best fit.
 
 Choropleth Map
 Goal:<br> Make a chloropleth map of average yields per texas county. Upon hovering we wanted users to see the county name and its average yield.
@@ -59,13 +77,17 @@ Evaluation:<br> We were satisfied with our final map. Although it is a map, it a
 
 Racing Bar 
 Goal:<br> Make a racing bar graph that visualizes the accumulation of hybrids from each brand over the years. 
-Evaluation:<br> While we did successfully implement this part, we had trouble imbedding the animation into our shiny app. We worked around this by embedding a video of our animation in action instead.
+Evaluation:<br> 
+While we did successfully implement this part, we had trouble imbedding the animation into our shiny app. We worked around this by embedding a video of our animation in action instead.
 
 Linear Model Analysis  
 Goal:    
 The expressed aim of this analysis is to visualize the contribution of certain factors to the response variable: grain yield.  
 Evaluation:  
 The individual effect plots are easy to understand because they are reflective of only one variable at a time. A more expansive analysis with a model with more terms would only prove harder to visualize and become less meaningul for anyone who is not a subject-matter expert. The limitation of this approach is that further factors may not have linear effects and would require a more flexible model. 
+
+### Usage
+The app can be found here https://fleon.shinyapps.io/STAT689-Project/. Best practice is to open the app in browser. Some parts of the app like the map and bar chart race are slower to load, so allow some time for them to load in. If they still don't appear html files of these visualizations can be found here https://drive.google.com/file/d/1wgHxxF2yTMw8LPsy24gXHz5EbZ_qAlLP/view?usp=sharing. Downloading and running these html files will allow the ability to see the visualizations without much buffering/loading.
 
 ### Discussions & Future Work
 The final data visualization dashboard encompasses a large breadth of agronomic and historical insights. However, beyond the agronomic practices, further work should be conducted to narrow in on the environmental and genetic components of these trials. This area of study is exceedingly complicated by cross-over interactions between the agronomic practices, environmental conditions, and the plant's genetics. Typically, these interactions are very specific to a production practice or geographic area. These type of research questions are best addressed with targeted experimentation and not well suited for investigation via a large retrospective like we present. 
@@ -76,10 +98,14 @@ The nature of these data is that they are annually updated with the latest year'
 
 ### Team Member Contributions
 Ram Pangaluri:<br>
-Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report namely reference and evaluation plan sections(except LMM part),as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
+Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report namely reference, usage, and evaluation plan sections(except LMA part). Also implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.
 
 Fabian Leon:<br>
 Design, planning, data collection, writing, and revising (P1-7). Brainstorming and development of project story points as the team member with the subject matter expertise for these data. Created the home page, historical yield improvements, and yield factors tabs in the shiny app. Revised all plots and integrated all code into the shiny app, with the exception of the racing bars animation, with the final dataset. For P7, contributed Introduction, Motivation, Methodology, and Discussion.
+
+Ashok Shanker:<br>
+Contributed to Design, planning, writing and revising (P1-P7). Helped with Brainstorming and Story points in alignment with project goals. Helped create intermediate datasets to implement visualizations used. Created and integrated the Choropleth and Racebar chart tabs into Shiny app. Contributed to the R app files on team github. For P7, contributed to the Visualization Design and Implementation and Evaluation Plan. 
+
 
 ### References
 

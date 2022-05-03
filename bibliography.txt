@@ -1,4 +1,15 @@
-﻿@inbook{RN261,
+﻿@misc{RN262,
+   url = {http://varietytesting.tamu.edu/grainsorghum/},
+   type = {Web Page}
+}
+
+@misc{RN264,
+   url = {https://www.sorghumcheckoff.com/sorghum-101/},
+   year = {2022},
+   type = {Web Page}
+}
+
+@inbook{RN261,
    author = {Balakrishna, D. and Vinodh, R. and Madhu, P. and Avinash, S. and Rajappa, P. V. and Bhat, B. Venkatesh},
    title = {Chapter 7 - Tissue Culture and Genetic Transformation in Sorghum bicolor},
    booktitle = {Breeding Sorghum for Diverse End Uses},
@@ -12,9 +23,41 @@
    type = {Book Section}
 }
 
+@misc{RN265,
+   url = {https://CRAN.R-project.org/package=shiny},
+   year = {2021},
+   type = {Generic}
+}
+
+@misc{RN268,
+   url = {https://github.com/feddelegrand7/ddplot},
+   year = {2022},
+   type = {Generic}
+}
+
+@book{RN267,
+   author = {Sievert, Carson},
+   title = {Interactive Web-Based Data Visualization with R, plotly, and shiny},
+   publisher = {Chapman and Hall/CRC},
+   ISBN = {9781138331457},
+   url = {https://plotly-r.com},
+   year = {2020},
+   type = {Book}
+}
+
 @misc{RN180,
    url = {https://quickstats.nass.usda.gov/},
    year = {2021},
    type = {Online Database}
+}
+
+@book{RN266,
+   author = {Wickham, Hadley},
+   title = {ggplot2: Elegant Graphics for Data Analysis},
+   publisher = {Springer-Verlag New York},
+   ISBN = {978-3-319-24277-4},
+   url = {https://ggplot2.tidyverse.org},
+   year = {2016},
+   type = {Book}
 }
 
