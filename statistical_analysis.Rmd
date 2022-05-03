@@ -5,13 +5,13 @@ date: "May 2, 2022"
 output: html_document
 ---
 
-Introduction
+# Introduction
+
+For grain sorghum to achieve maximal yields many factors must contribute and interact favorably. 
 
 
 
-
-
-
+To better understand the effects of environmental factors, cultural practices, and genetics, we can model the yields of Texas AgriLife trials against 
 
 
 

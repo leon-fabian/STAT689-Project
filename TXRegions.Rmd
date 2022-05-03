@@ -1,0 +1,29 @@
+---
+title: "TXRegions"
+author: "Fabian Leon"
+date: "May 2, 2022"
+output: 
+  html_document:
+  mathjax: "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+
+---
+
+### Texas Production Regions
+
+Further analysis can be conducted for this dataset with an all-random linear model accounting for the following effects and fit to the traits that serve as measures of hybrid performance (Grain yield, Plant height, Days to Flowering, Testweight, Moisture, and Lodging). 
+
+<img src="images/randommodel.png" alt="model terms" width="300"/>
+
+
+Following the linear model analysis, a nonlinear iterative partial least squares (nipals) principal component analysis (pca) was applied to the best linear unbiased predictions attributable to counties to cluster counties with similar environmental effects on hybrid performance. The NIPALS PCA was implemented using the `pcaMethods` package in R.
+
+<img src="images/regionsPCA.png" alt="biplot of texas counties" width="550"/>
+
+
+
+
+
+
+
+
+

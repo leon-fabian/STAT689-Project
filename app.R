@@ -141,7 +141,7 @@ ui <- dashboardPage(
       tabItem(tabName = "Map",
               #h2("Chloropleth map of average yield per county")
               fluidRow(box(plotlyOutput("map"))),
-              includeMarkdown("p5.Rmd")
+              includeMarkdown("TXRegions.Rmd")
       ),
       
       # Racing Bars
@@ -187,12 +187,12 @@ server = function(input, output) {
                 geojson = file_js,
                 locations = usda_df$FIPS,
                 frame = usda_df$Year,
-                text = usda_df$hover,
                 z = usda_df$bu.per.acre.Yield,
                 colorscale = "Jet",
                 zmin = 0,
                 zmax = max(usda_df$bu.per.acre.Yield),
-                marker = list(line = list(width = 0))) %>% 
+                marker = list(line = list(width = 0)),
+                text = usda_df$hover) %>% 
       colorbar(title = "Yield (bu/acre)") %>% 
       layout(title = "USDA: Average Yield (bu/ac)", 
              geo = list(#scope = 'usa',

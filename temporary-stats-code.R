@@ -5,7 +5,6 @@ library(lme4)
 library(ggiraph)
 library(ggiraphExtra)
 
-
 # Read Dataset
 data = read.csv("data/data.csv", na.strings = c("",".","NA"))
 factors = c("Dataset", "Location", "County", "AgriLife.Region", "Region", "Irrigation", 
@@ -23,11 +22,6 @@ usda = data[which(data$Dataset == "USDA"),]
 txar = data[which(data$Dataset == "TXAR"),]
 
 traits = c("Year", "DA", "PH", "EX", "GY")
-
-str(txar)
-
-# Yield = Location + Year + Hybrid + Hybrid*Location + Irrigation + Previous Crop + Rainfall 
-# (1|County:Year) + (1|County:Hybrid) + (1|Year:Hybrid) 
 
 ##### Irrigation #####
 Irr.model = lm(lbs.per.ac.Yield ~ Year + Irrigation, txar)
