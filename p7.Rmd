@@ -35,7 +35,10 @@ The final tab of the data visualization dashboard addresses the environmental va
 
 For evaluation, we compare the initial proposal with the final product of the application produced. Each question from the proposal is addressed and checked to determine whether the final product satisfies our project goals. The evaluation for each visualization technique goes as follows:
 
-Line Graph 
+Line Graph <br>
+Goal:<br> Make a line graph with range slider to see how sorghum yields(GY) changed over time and what time periods saw the greatest increases in yield. Users should be able to interact with data and choose date ranges to examine the data closer.<br>
+Evaluation: <br>
+Overall we were satisfied with the outcome of this attribute of the project. The user interaction objective of this visualization was achieved. Furthermore we also made the line graph display further information on a hover action.
 
 Scatter Plot 
 
