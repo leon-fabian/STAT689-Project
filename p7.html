@@ -362,15 +362,27 @@ Ram Pangaluri, Ashok Shanker, Fabian Leon
 <h3>Motivation</h3>
 <p>The idea for this visualization project was to use the <a href="http://varietytesting.tamu.edu/grainsorghum/">Texas A&amp;M Variety Testing</a> and <a href="https://quickstats.nass.usda.gov/">USDA NASS</a> data repositories on <a href="https://www.sorghumcheckoff.com/sorghum-101/">grain sorghum</a> production to visualize yield and agricultural production trends for the state of Texas. The first dataset is from Texas A&amp;M Agrilife, which contains data from 1970 - 2021 Texas Sorghum Variety Trials. The second is the dataset from the USDA National Agricultural Statistics website that was collected to reflect this same time period. While agronomists attempt to look at the trends through their research, individual experimental attempts seldom span as long a time period. Visualizing these datasets is the best representation of historical trends for Texas production regions as could be compiled.</p>
 </div>
-<div id="visualization-designimplementation" class="section level3">
-<h3>Visualization Design/Implementation</h3>
+<div id="visualization-design-implementation" class="section level3">
+<h3>Visualization Design &amp; Implementation</h3>
+<p>In our project, the Shiny framework is used for creating a set of 5 visualizations as a web application. Shiny lets us create a reactive application with visualization strategies to choose the processed data displayed as per the project vision. Our development cycle involved creating the basic app with our visualization goals, making changes, and experimenting with the results obtained. User interface components provided by the framework are customized in the back-end as per our methodology to visualize the data to answer the research questions that originated during the proposal.</p>
+<p>Our app consists of five menu items in the dashboard, which let the user choose the desired visualization to appear on the right side of the application. Two of the five items have UI reactivity to let the user play around to compare and contrast the filtered data plots. On the back-end server, the reactive code is extracted out of the app UI enters the server to perform specific visualization where each item is coded to display the output back on the UI. Our front-end is a ShinyDashboard that allows the user to choose a particular visualization with support for interactive functionality. We have used the following techniques in our project: Line Graph, Scatter Plot, Choropleth Map, Racing Bar Graph, and an LMM Analysis.</p>
 </div>
 <div id="methodology" class="section level3">
 <h3>Methodology</h3>
-<p>Clearly state why &amp; how can your data visualization be used to solve the research questions</p>
+<p>The generalized additive model’s smoothed line graph of historical yields is a useful tool to see the peaks and valleys of sorghum yields throughout the years. From this plot, we can then retrospectively focus on a certain time period and reflect on what was happening in the industry at that time that might’ve caused such an increase or decrease in yields.</p>
+<p>A biological system like a sorghum plant or a field of sorghum contains many dependencies and in some sense is a zero-sum system. The correlation plots on the “Trait Relationships” tabs between metrics of hybrid performance indicate the tradeoffs within this crop system. Strong associations can be exploited once visualized with a major example being the association between taller plant height and higher grain yield.</p>
+<p>The choropleth map is a strong visual for historic progress as it allows for the reader to witness where the highest yielding sorghum production zones were in the state throughout history. Additionally this visual allows us to see the clear decline in the number of Texas counties that grew sorghum beginning in the early 2000s. This loss of sorghum acreage is very clearly reflected with the abscence of more and more counties as the map’s slider progresses.</p>
+<p>The grain sorghum industry, like the rest of the agricultural industry, has seen consolidation in companies working to produce new hybrid seeds. The racing bar chart in the “Company Brands” tab allows a visual representation of which company brands were most profilic in submitting new hybrid products to these trials throughout history. These bars reflect private seed companies and also public institutions that developed hybrids like Texas A&amp;M or USDA agencies.</p>
+<p>The final tab of the data visualization dashboard addresses the environmental variables and cultural practices affecting grain yield. The expressed aim of this analysis is to visualize the contribution of a limited number of factors to the response variable: grain yield. A more expansive analysis with a model with more terms would only prove harder to visualize and become less meaningul for anyone who is not a subject-matter expert.</p>
 </div>
 <div id="evaluation-plan" class="section level3">
 <h3>Evaluation Plan</h3>
+<p>For evaluation, we compare the initial proposal with the final product of the application produced. Each question from the proposal is addressed and checked to determine whether the final product satisfies our project goals. The evaluation for each visualization technique goes as follows:</p>
+<p>Line Graph</p>
+<p>Scatter Plot</p>
+<p>Choropleth Map</p>
+<p>Racing Bar</p>
+<p>LMM Analysis</p>
 </div>
 <div id="discussions-future-work" class="section level3">
 <h3>Discussions &amp; Future Work</h3>
@@ -383,6 +395,7 @@ Ram Pangaluri, Ashok Shanker, Fabian Leon
 </div>
 <div id="team-member-contributions" class="section level3">
 <h3>Team Member Contributions</h3>
+<p>Ram Pangaluri:<br> Contributed to design,planning, and writing in P1-5. Helped brainstorm and finalize project story points. Produced preliminary plots for story points and P6 report, including racing bar animation, chloropleth map, and scatterplot variable relationship interaction. Also created intermediate datasets to implement the previous visualizations mentioned. In P7,contributed to writing of the report,as well as implemented workarounds for animation embedding in the shiny app. Contributed R app files and data to team github,and very active in team discord.</p>
 </div>
 
 
